@@ -54,7 +54,7 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style lang="scss">
-    @import "../styles/variables";
+    @use "../styles/variables" as vars;
 
     .devis-page {
         padding: 150px 1rem 80px;
@@ -63,7 +63,7 @@ import Footer from '../components/Footer.astro';
 
     .container { max-width: 900px; margin: 0 auto; }
 
-    h1 { font-size: 3rem; margin-bottom: 1rem; color: $gold; }
+    h1 { font-size: 3rem; margin-bottom: 1rem; color: vars.$gold; }
 
     .steps {
         display: grid;
@@ -76,12 +76,12 @@ import Footer from '../components/Footer.astro';
         background: rgba(255,255,255,0.03);
         padding: 2rem;
         border-radius: 15px;
-        border: 1px solid rgba($gold, 0.1);
+        border: 1px solid rgba(vars.$gold, 0.1);
 
         .number {
             display: inline-block;
             width: 40px; height: 40px;
-            background: $gold;
+            background: vars.$gold;
             color: #030f25;
             border-radius: 50%;
             line-height: 40px;
@@ -91,14 +91,14 @@ import Footer from '../components/Footer.astro';
     }
 
     .action-box {
-        background: rgba($gold, 0.1);
+        background: rgba(vars.$gold, 0.1);
         padding: 3rem;
         border-radius: 20px;
-        border: 1px solid $gold;
+        border: 1px solid vars.$gold;
 
         .btn-gold {
             display: inline-block;
-            background: $gold;
+            background: vars.$gold;
             color: #030f25;
             padding: 1.2rem 2.5rem;
             border-radius: 5px;
@@ -111,9 +111,9 @@ import Footer from '../components/Footer.astro';
     .badge {
         display: inline-block;
         padding: 0.4rem 1rem;
-        background: rgba($gold, 0.2);
-        color: $gold;
-        border: 1px solid $gold;
+        background: rgba(vars.$gold, 0.2);
+        color: vars.$gold;
+        border: 1px solid vars.$gold;
         border-radius: 50px;
         font-size: 0.8rem;
         font-weight: bold;

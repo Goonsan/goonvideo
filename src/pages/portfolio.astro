@@ -20,15 +20,15 @@ import VideoGallery from '../components/VideoGallery.astro';
 </Layout>
 
 <style lang="scss">
-    @import "../styles/variables";
+    @use "../styles/variables" as vars;
 
-    .portfolio-page { padding-top: 150px; background: $dark-blue; }
+    .portfolio-page { padding-top: 150px; background: vars.$dark-blue; }
 
     .page-header {
         text-align: center;
         margin-bottom: 5rem;
         .subtitle { 
-            color: $gold; 
+            color: vars.$gold; 
             text-transform: uppercase; 
             letter-spacing: 4px; 
             font-size: 0.9rem; 
@@ -37,7 +37,7 @@ import VideoGallery from '../components/VideoGallery.astro';
         }
         .page-title { font-size: 4rem; color: white; margin: 0; }
         .title-underline {
-            width: 60px; height: 3px; background: $gold; margin: 1.5rem auto 0;
+            width: 60px; height: 3px; background: vars.$gold; margin: 1.5rem auto 0;
         }
     }
 
