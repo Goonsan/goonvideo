@@ -1,0 +1,42 @@
+---
+// src/pages/tarifs.astro
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PricingGrid from '../components/PricingGrid.astro';
+---
+
+<Layout title="Nos Tarifs - GON VIDEO">
+    <Header />
+    <main style="padding-top: 100px;"> <h1 style="text-align: center; font-size: 3rem;">Mes Tarifs 2026</h1>
+        <PricingGrid />
+    </main>
+
+    <section class="cta-section">
+        <h3>Un projet spécifique ?</h3>
+        <p>Contactez-moi pour un devis personnalisé adapté à vos besoins.</p>
+        <a href="mailto:oliviergonnet.video@gmail.com" class="btn-contact">ME CONTACTER</a>
+    </section>
+
+    <style lang="scss">
+        .cta-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: linear-gradient(to bottom, transparent, rgba(229, 195, 92, 0.1));
+        }
+        .btn-contact {
+            display: inline-block;
+            background: #e5c35c;
+            color: #030f25;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-weight: 800;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: transform 0.2s;
+        }
+        .btn-contact:hover { transform: scale(1.05); }
+    </style>
+
+    <Footer />
+</Layout>

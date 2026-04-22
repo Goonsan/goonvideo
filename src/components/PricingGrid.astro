@@ -1,0 +1,172 @@
+---
+// src/components/PricingGrid.astro
+---
+
+<section class="pricing-container">
+    <div class="category">
+        <h2 class="category-title"><span>💍</span> Mariage</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Pack Basique</h3>
+                <p class="price">600 €</p>
+                <p class="desc">La cérémonie et le vin d'honneur</p>
+            </div>
+            <div class="card featured">
+                <div class="badge">Populaire</div>
+                <h3>Pack Standard</h3>
+                <p class="price">900 €</p>
+                <p class="desc">De la cérémonie à la première danse</p>
+            </div>
+            <div class="card">
+                <h3>Pack Premium</h3>
+                <p class="price">1600 €</p>
+                <p class="desc">Journée complète + teaser réseaux</p>
+            </div>
+        </div>
+        <p class="extra">+ Option Drone : 200 €</p>
+    </div>
+
+    <div class="category">
+        <h2 class="category-title"><span>🎵</span> Clip Musical</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Pack Basique</h3>
+                <p class="price">400 €</p>
+                <p class="desc">Captation Live/Répétition, 2h sur place, montage synchro audio</p>
+            </div>
+            <div class="card">
+                <h3>Pack Standard</h3>
+                <p class="price">800 €</p>
+                <p class="desc">Clip simple, tournage 1/2 journée, 1 lieu, montage créatif</p>
+            </div>
+            <div class="card">
+                <h3>Pack Premium</h3>
+                <p class="price">1500 €</p>
+                <p class="desc">Clip avancé, tournage 1 journée, multi-lieux, étalonnage et effets</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 class="category-title"><span>📱</span> Communication Récurrente</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Pack Basique</h3>
+                <p class="price">250 €</p>
+                <p class="desc">1 vidéo de 30 sec à 1 min, format vertical, sous-titres inclus</p>
+            </div>
+            <div class="card">
+                <h3>Pack Standard</h3>
+                <p class="price">450 €</p>
+                <p class="desc">1 vidéo de 1 à 2 min, habillage graphique et motion design</p>
+            </div>
+            <div class="card">
+                <h3>Pack Premium</h3>
+                <p class="price">850 €</p>
+                <p class="desc">Pack 1 mois de contenu, 1/2 journée de tournage, 4 vidéos courtes livrées</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="category">
+        <h2 class="category-title"><span>🏢</span> Film Vitrine & Identité</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Pack Basique</h3>
+                <p class="price">450 €</p>
+                <p class="desc">Vidéo vitrine dynamique de 1 min, sans interview</p>
+            </div>
+            <div class="card">
+                <h3>Pack Standard</h3>
+                <p class="price">850 €</p>
+                <p class="desc">Vidéo de 1 à 2 min, storytelling</p>
+            </div>
+            <div class="card">
+                <h3>Pack Premium</h3>
+                <p class="price">1450 €</p>
+                <p class="desc">Film corporate, interviews avec éclairage et son pro</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style lang="scss">
+    /* Le reste de ton SCSS reste identique, il s'appliquera automatiquement à la nouvelle section */
+    .pricing-container {
+        padding: 2rem 1rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .category {
+        margin-bottom: 5rem;
+    }
+    .category-title {
+        font-size: 2.2rem;
+        color: var(--gold, #e5c35c);
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-transform: uppercase;
+    }
+    .category-title span { font-size: 1.8rem; }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    .card:hover {
+        background: rgba(255, 255, 255, 0.07);
+        transform: translateY(-5px);
+        border-color: var(--gold, #e5c35c);
+    }
+    .featured {
+        border: 2px solid var(--gold, #e5c35c);
+        position: relative;
+        background: rgba(229, 195, 92, 0.05);
+    }
+    .badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--gold, #e5c35c);
+        color: #030f25;
+        padding: 2px 12px;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        border-radius: 20px;
+    }
+    h3 { margin: 0; font-size: 1.3rem; opacity: 0.9; }
+    .price {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin: 1rem 0;
+        color: #fff;
+    }
+    .desc {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #aaa;
+        min-height: 3em;
+    }
+    .extra {
+        margin-top: 1.5rem;
+        text-align: center;
+        color: var(--gold, #e5c35c);
+        font-weight: 600;
+        font-style: italic;
+    }
+</style>

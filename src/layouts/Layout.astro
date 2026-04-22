@@ -1,0 +1,77 @@
+---
+// src/layouts/Layout.astro
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<slot /> </body>
+</html>
+
+<style is:global lang="scss">
+	$gold: #e5c35c;
+  	$dark-blue: #030f25;
+  	$font-titles: 'Playfair Display', serif;
+  	$font-body: 'Plus Jakarta Sans', sans-serif;
+
+  	:root {
+    	--gold: #{$gold}; // On fait passer la variable Sass en variable CSS pour le reste du site
+    	--dark-blue: #{$dark-blue};
+  	}
+
+	html, body {
+		margin: 0;
+		padding: 0;
+		background-color: $dark-blue;
+		color: white;
+		font-family: $font-body;
+		-webkit-font-smoothing: antialiased; // Rend les polices plus fines/propres sur Mac/Chrome
+	}
+
+	h1, h2, h3 {
+		font-family: $font-titles;
+		color: $gold;
+	}
+
+	a {
+		color: white;
+		text-decoration: none;
+		transition: color 0.3s ease;
+
+		&:hover {
+		color: $gold;
+		}
+	}
+
+	.btn-yellow {
+		background-color: $gold;
+		color: #111;
+		padding: 0.75rem 1.5rem;
+		border-radius: 4px;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+	}
+
+	.btn-outlined {
+		background-color: transparent;
+		border: 2px solid white;
+		color: white;
+		padding: 0.75rem 1.5rem;
+		border-radius: 4px;
+		font-weight: 700;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+	}
+
+	/* Reset simple */
+	* { box-sizing: inherit; }
+</style>

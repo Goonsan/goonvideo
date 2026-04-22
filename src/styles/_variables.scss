@@ -1,0 +1,11 @@
+// src/styles/_variables.scss
+$gold: #e5c35c;
+$dark-blue: #030f25;
+$font-titles: 'Playfair Display', serif;
+$font-body: 'Plus Jakarta Sans', sans-serif;
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

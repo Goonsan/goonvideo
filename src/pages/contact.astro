@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Contact - GON VIDEO">
+    <Header />
+    <main class="contact-page">
+        <section class="contact-container">
+            <div class="contact-info">
+                <h1>Discutons de votre projet</h1>
+                <p>Besoin d'un film de mariage, d'un clip ou d'une vidéo corporate ? Je réponds à toutes vos questions sous 24h.</p>
+                
+                <div class="info-list">
+                    <!--<div class="info-item">
+                        <span>📞</span>
+                        <div>
+                            <strong>Téléphone</strong>
+                            <p>06 44 23 79 89</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span>✉️</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p>oliviergonnet.video@gmail.com</p>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+
+            <div class="contact-action-card">
+                <div class="card-content">
+                    <h2>Prêt à passer à l'action ?</h2>
+                    <p>Cliquez ci-dessous pour m'envoyer un mail directement. N'hésitez pas à me décrire brièvement votre projet et vos dates.</p>
+                    
+                    <a href="mailto:oliviergonnet.video@gmail.com?subject=Demande de projet vidéo - GON VIDEO" class="main-btn">
+                        📩 ENVOYER UN MESSAGE
+                    </a>
+                    <!--
+                    <span class="or-text">OU</span>
+                    
+                    <a href="tel:0644237989" class="secondary-link">M'appeler directement</a>
+                    -->
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style lang="scss">
+    .contact-page { padding-top: 150px; min-height: 80vh; background-color: #030f25; }
+    .contact-container { 
+        max-width: 1100px; 
+        margin: 0 auto; 
+        display: grid; 
+        grid-template-columns: 1fr 1fr; 
+        gap: 4rem; 
+        padding: 0 2rem;
+    }
+
+    h1 { color: #e5c35c; font-size: 2.8rem; margin-bottom: 1.5rem; }
+    .contact-info p { font-size: 1.1rem; opacity: 0.8; line-height: 1.6; }
+
+    .info-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
+    .info-item { display: flex; gap: 1.5rem; align-items: center; }
+    .info-item span { font-size: 1.5rem; background: rgba(229, 195, 92, 0.1); padding: 15px; border-radius: 50%; border: 1px solid rgba(229, 195, 92, 0.2); }
+    .info-item strong { display: block; color: #e5c35c; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+    .info-item p { margin: 0; font-size: 1.2rem; font-weight: 600; }
+
+    /* La carte d'action */
+    .contact-action-card { 
+        background: rgba(255,255,255,0.03); 
+        padding: 3rem; 
+        border-radius: 20px; 
+        border: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+        display: flex;
+        align-items: center;
+    }
+    .card-content h2 { font-size: 1.8rem; margin-bottom: 1rem; color: #fff; }
+    .card-content p { margin-bottom: 2rem; opacity: 0.7; }
+
+    .main-btn { 
+        display: block;
+        background: #e5c35c; 
+        color: #030f25; 
+        padding: 1.2rem; 
+        border-radius: 8px; 
+        font-weight: 800; 
+        text-decoration: none;
+        transition: all 0.3s ease;
+        letter-spacing: 1px;
+    }
+    .main-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+    .or-text { display: block; margin: 1.5rem 0; font-size: 0.8rem; opacity: 0.5; }
+    .secondary-link { color: #e5c35c; text-decoration: none; font-weight: 600; border-bottom: 1px dotted; padding-bottom: 2px; }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 768px) {
+        .contact-container {
+            display: block;
+        }
+    }
+</style>
