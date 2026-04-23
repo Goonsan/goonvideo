@@ -11,7 +11,7 @@ services:
       - proxy-network # On utilise le nom interne défini en bas
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.goon-video.rule=Host(`goonfolio.com`) || Host(`www.goonfolio.com`)"
+      - "traefik.http.routers.goon-video.rule=Host(`goonvideo.fr`) || Host(`www.goonvideo.fr`)"
       
       # Configuration SSL (Le Cadenas)
       - "traefik.http.routers.goon-video.entrypoints=websecure"
@@ -19,7 +19,7 @@ services:
       - "traefik.http.routers.goon-video.tls.certresolver=myresolver"
 
       # Redirection automatique HTTP -> HTTPS
-      - "traefik.http.routers.goon-video-http.rule=Host(`goonfolio.com`) || Host(`www.goonfolio.com`)"
+      - "traefik.http.routers.goon-video-http.rule=Host(`goonvideo.fr`) || Host(`www.goonvideo.fr`)"
       - "traefik.http.routers.goon-video-http.entrypoints=web"
       - "traefik.http.routers.goon-video-http.middlewares=astro-redirect"
       - "traefik.http.middlewares.astro-redirect.redirectscheme.scheme=https"
