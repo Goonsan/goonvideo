@@ -10,9 +10,11 @@
 
 <section class="block-hero-content">
     <div class="hero-content">
-        <div class="hero-scroll">
-            <svg id="mouse" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-icon lucide-mouse"><rect x="5" y="2" width="14" height="20" rx="7"/><path d="M12 6v4"/></svg>
-            <svg id="arrowmouse" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-down-icon lucide-move-down"><path d="M8 18L12 22L16 18"/><path d="M12 2V22"/></svg>
+        <div class="hero-scroll-container">
+            <div class="hero-scroll">
+                <svg id="mouse" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mouse-icon lucide-mouse"><rect x="5" y="2" width="14" height="20" rx="7"/><path d="M12 6v4"/></svg>
+                <svg id="arrowmouse" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-down-icon lucide-move-down"><path d="M8 18L12 22L16 18"/><path d="M12 2V22"/></svg>
+            </div>
         </div>
 
         <h1 class="hero-title">DONNEZ VIE À VOS PROJETS, DE L'ÉMOTION À L'IMAGE.</h1>
@@ -55,7 +57,6 @@
         transform: translate(-50%, -50%);
         z-index: 0;
         object-fit: cover;
-        opacity: 0.6;
     }
 
     .block-hero-content {
@@ -77,6 +78,8 @@
         margin: 0 auto;
         top: -100px;
 		box-sizing: border-box;
+        border: solid 1px  vars.$gold;
+        box-shadow: 0 2px 20px #000;
     }
 
     .hero-title {
@@ -134,19 +137,43 @@
     }
 
     /* Animation Mouse */
-    .hero-scroll {
+    .hero-scroll-container {
         position: absolute;
-        top: -3rem;
+        top: -11px;
         left: 0;
         right: 0;
+    }
+
+    .hero-scroll {
+        position: relative;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        color: vars.$gold;
+        justify-content: center;
+        color: #000;
+
+        &:before {
+            content: "";
+            border: solid 1px  vars.$gold;
+            width: 3.4rem;
+            height: 3.4rem;
+            border-radius: 100%;
+            position: absolute;
+            background: vars.$gold;
+            z-index: -1;
+        }
+    }
+
+    svg#mouse {
+        width: 2rem;
+        height: 2rem;
+        position: relative;
+        left: 4px;
     }
 
     svg#arrowmouse {
         animation: bounce 2s infinite;
+        position: relative;
+        left: -4px;
     }
 
     @keyframes bounce {
