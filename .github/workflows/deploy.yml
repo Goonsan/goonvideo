@@ -29,7 +29,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "dist/*"
-          target: "/home/ubuntu/goon-video-site/"
+          # AJOUT DU /dist À LA FIN DU TARGET
+          target: "/home/ubuntu/goon-video-site/dist/" 
           strip_components: 1
 
       - name: Sync Docker Compose (Server Config)
