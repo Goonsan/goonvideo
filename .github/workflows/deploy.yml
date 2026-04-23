@@ -22,7 +22,7 @@ jobs:
           npm install
           npm run build
 
-     - name: Sync Dist Files (Website Content)
+      - name: Sync Dist Files (Website Content)
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SERVER_IP }}
