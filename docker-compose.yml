@@ -8,7 +8,7 @@ services:
     volumes:
       - ./dist:/usr/share/nginx/html:ro
     networks:
-      - goon_web
+      - proxy-network # On utilise le nom interne défini en bas
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.goon-video.rule=Host(`goonfolio.com`) || Host(`www.goonfolio.com`)"
@@ -25,5 +25,6 @@ services:
       - "traefik.http.middlewares.astro-redirect.redirectscheme.scheme=https"
 
 networks:
-  goon_web:
+  proxy-network:
     external: true
+    name: goon_web
