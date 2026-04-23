@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: goon-video-astro
+    restart: always
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+    networks:
+      - goon_web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.goon-video.rule=Host(`goonfolio.com`) || Host(`www.goonfolio.com`)"
+      
+      # Configuration SSL (Le Cadenas)
+      - "traefik.http.routers.goon-video.entrypoints=websecure"
+      - "traefik.http.routers.goon-video.tls=true"
+      - "traefik.http.routers.goon-video.tls.certresolver=myresolver"
+
+      # Redirection automatique HTTP -> HTTPS
+      - "traefik.http.routers.goon-video-http.rule=Host(`goonfolio.com`) || Host(`www.goonfolio.com`)"
+      - "traefik.http.routers.goon-video-http.entrypoints=web"
+      - "traefik.http.routers.goon-video-http.middlewares=astro-redirect"
+      - "traefik.http.middlewares.astro-redirect.redirectscheme.scheme=https"
+
+networks:
+  goon_web:
+    external: true
