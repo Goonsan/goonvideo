@@ -126,6 +126,7 @@ import Footer from '../components/Footer.astro';
         </div>
     </section>
 
+    <!--
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">Le choix parfait pour leur mariage</h2>
@@ -144,6 +145,40 @@ import Footer from '../components/Footer.astro';
                         <span>Envoyé le 22/04/2026 sur Mariages.net</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+     -->
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Le choix parfait pour leur mariage</h2>
+            
+            <div class="testimonials-grid">
+                <div id="wp-widget-reviews">
+                    <div id="wp-widget-preview">
+                        Lire <a href="https://www.mariages.net/video-mariage/goon--e399735/avis" rel="nofollow">nos avis</a> sur &nbsp;
+                        <a href='https://www.mariages.net' rel="nofollow">
+                            <img src="https://cdn1.mariages.net/assets/img/logos/gen_logoHeader.svg" height="20" alt="Mariages.net">
+                        </a>
+                    </div>
+                </div>
+
+                <script is:inline src="https://cdn1.mariages.net/js/wp-widget.js?symfnw-FR48-1-20260424-001-0_www_m_"></script>
+                
+                <script is:inline>
+                    // On attend que le DOM soit prêt pour être sûr que le div existe
+                    document.addEventListener('astro:page-load', () => {
+                        if (typeof wpShowReviews === 'function') {
+                            wpShowReviews(399735, "black");
+                        }
+                    });
+                    
+                    // Fallback pour le premier chargement sans View Transitions
+                    if (typeof wpShowReviews === 'function') {
+                        wpShowReviews(399735, "black");
+                    }
+                </script>
             </div>
         </div>
     </section>
@@ -250,15 +285,22 @@ import Footer from '../components/Footer.astro';
     .testimonials-grid {
         display: grid;
         place-items: center;
-        .testimonial-card {
-            background: rgba(255,255,255,0.03);
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 600px;
-            .client-info strong { color: vars.$gold; font-size: 1.2rem; }
-            .stars { color: vars.$gold; margin-top: 0.5rem; }
-            .testimonial-body { margin: 1.5rem 0; font-style: italic; line-height: 1.7; }
-            .testimonial-footer { font-size: 0.8rem; opacity: 0.5; }
+        background-color: #fff;
+        border-radius: 8px;
+
+        // Utilisation de :global pour cibler les classes injectées par le script externe
+        :global(.weddingWireWidgetReview__post) {
+            display: block !important;
+            color: #333 !important;
+            visibility: visible !important;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            margin-top: 10px !important;
+        }
+
+        :global(.weddingWireWidgetReview__title) {
+            color: vars.$dark-blue !important;
+            font-weight: bold !important;
         }
     }
 

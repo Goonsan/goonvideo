@@ -8,22 +8,24 @@
             <span><img src="/svg/envelope-white.svg" alt="mail" /></span> oliviergonnet.video@gmail.com
         </a>
         <a href="https://www.youtube.com/@OlivierGonnet" target="_blank">
-            <span><img src="/svg/youtube-white.svg" alt="instagram" /></span> oliviergonnet
+            <span><img src="/svg/youtube-white.svg" alt="Youtube" /></span> oliviergonnet
         </a>
         <a href="https://www.instagram.com/oliviergonnet.video/" target="_blank">
-            <span><img src="/svg/instagram-white.svg" alt="youtube" /></span> oliviergonnet.video
+            <span><img src="/svg/instagram-white.svg" alt="Instagram" /></span> oliviergonnet.video
         </a>
     </div>
     <p class="copyright">© 2024 GOONVIDEO - Tous droits réservés.</p>
 </footer>
 
 <style lang="scss">
+    @use "../styles/variables" as vars;
+
     footer {
-        background-color: #030f25;
+        background-color: #050810;
         color: white;
         padding: 3rem 1rem;
         text-align: center;
-        border-top: 1px solid rgba(255,255,255,0.1);
+        border-top: 1px solid rgba(vars.$gold, 0.6);
     }
     .contact-info {
         display: flex;

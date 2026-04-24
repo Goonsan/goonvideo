@@ -1,9 +1,6 @@
 ---
 // 1. On récupère l'URL complète
 const pathname = new URL(Astro.request.url).pathname;
-
-// 2. On nettoie l'URL (on enlève le slash final s'il existe, sauf pour la home)
-// Ex: "/portfolio/" devient "/portfolio"
 const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
 ---
 
@@ -26,10 +23,30 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
             <a href="/portfolio" class={currentPath === "/portfolio" ? "active" : ""}>Portfolio</a>
             <a href="/tarifs" class={currentPath === "/tarifs" ? "active" : ""}>Tarifs</a>
             <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>Contact</a>
+            
+            <div class="social-links mobile-only">
+                <a href="https://www.instagram.com/oliviergonnet.video" target="_blank" aria-label="Instagram">
+                    <img src="/svg/instagram-color.svg" height="24" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@OlivierGonnet" target="_blank" aria-label="YouTube">
+                    <img src="/svg/youtube-color.svg" height="20" alt="Youtube">
+                </a>
+            </div>
+
             <a href="/devis" class="btn-yellow mobile-only-btn">DEMANDER UN DEVIS</a>
         </nav>
         
-        <a href="/devis" class="btn-yellow desktop-only-btn">DEMANDER UN DEVIS</a>
+        <div class="header__actions desktop-only">
+            <div class="social-links">
+                <a href="https://www.instagram.com/oliviergonnet.video" target="_blank" aria-label="Instagram">
+                    <img src="/svg/instagram-color.svg" height="24" alt="Instagram">
+                </a>
+                <a href="https://www.youtube.com/@OlivierGonnet" target="_blank" aria-label="YouTube">
+                    <img src="/svg/youtube-color.svg" height="20" alt="Youtube">
+                </a>
+            </div>
+            <a href="/devis" class="btn-yellow">DEMANDER UN DEVIS</a>
+        </div>
     </div>
 </header>
 
@@ -59,7 +76,7 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
         z-index: 100; 
         //background-color: rgba(3, 15, 37, 0.8);
         background-color: rgba(3, 15, 37, 0.95);
-        border-bottom: 1px solid rgba(vars.$gold, 0.3);
+        border-bottom: 1px solid rgba(vars.$gold, 0.8);
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(10px);
 
@@ -125,10 +142,47 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
     .mobile-only-btn { display: none; }
     .burger-menu { display: none; }
 
-    /* --- RESPONSIVE MOBILE --- */
+    // Structure pour regrouper Réseaux + Bouton sur Desktop
+    .header__actions {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 0.8rem;
+        align-items: center;
+
+        a {
+            color: white;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                color: vars.$gold;
+                transform: translateY(-2px);
+            }
+        }
+        
+        &.mobile-only {
+            margin: 2rem 0;
+            justify-content: center;
+            gap: 2rem;
+            
+            a svg {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    }
+
+        /* --- RESPONSIVE MOBILE --- */
     @media (max-width: 900px) {
         .header { padding: 0.6rem 1rem; }
         .logo img { height: 50px; }
+        .desktop-only { display: none; }
         .desktop-only-btn { display: none; }
         .mobile-only-btn { display: block; margin-top: 1rem; text-align: center; }
         
@@ -166,7 +220,15 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
             transition: 0.3s ease;
             box-shadow: -5px 0 15px rgba(0,0,0,0.5);
 
-            &.active { right: 0; }
+            &.active {
+                right: 0;
+                display: flex;
+            }
         }
     }
+
+    @media (min-width: 901px) {
+        .mobile-only { display: none; }
+    }
+
 </style>
