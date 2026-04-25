@@ -1,20 +1,27 @@
----
-// src/components/Footer.astro
----
-
 <footer>
-    <div class="contact-info">
-        <a href="mailto:oliviergonnet.video@gmail.com">
-            <span><img src="/svg/envelope-white.svg" alt="mail" /></span> oliviergonnet.video@gmail.com
-        </a>
-        <a href="https://www.youtube.com/@OlivierGonnet" target="_blank">
-            <span><img src="/svg/youtube-white.svg" alt="Youtube" /></span> oliviergonnet
-        </a>
-        <a href="https://www.instagram.com/oliviergonnet.video/" target="_blank">
-            <span><img src="/svg/instagram-white.svg" alt="Instagram" /></span> oliviergonnet.video
-        </a>
-    </div>
-    <p class="copyright">© 2024 GOONVIDEO - Tous droits réservés.</p>
+    <nav aria-label="Informations de contact">
+        <ul class="contact-info">
+            <li>
+                <a href="mailto:oliviergonnet.video@gmail.com">
+                    <img src="/svg/envelope-white.svg" alt="" aria-hidden="true" />
+                    oliviergonnet.video@gmail.com
+                </a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/@OlivierGonnet" target="_blank" rel="noopener noreferrer" aria-label="Youtube d'Olivier Gonnet (ouvre un nouvel onglet)">
+                    <img src="/svg/youtube-white.svg" alt="" aria-hidden="true" />
+                    oliviergonnet
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/oliviergonnet.video/" target="_blank" rel="noopener noreferrer" aria-label="Instagram d'Olivier Gonnet (ouvre un nouvel onglet)">
+                    <img src="/svg/instagram-white.svg" alt="" aria-hidden="true" />
+                    oliviergonnet.video
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <p class="copyright">© {new Date().getFullYear()} GOONVIDEO - Tous droits réservés.</p>
 </footer>
 
 <style lang="scss">
@@ -27,33 +34,39 @@
         text-align: center;
         border-top: 1px solid rgba(vars.$gold, 0.6);
     }
+
     .contact-info {
+        list-style: none; // On retire les puces de la liste
+        padding: 0;
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        margin-bottom: 2rem;
+        gap: 1.2rem;
+        margin-bottom: 2.5rem;
+
+        a {
+            display: inline-flex; // inline-flex pour ne pas prendre toute la largeur
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+
+            img {
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+
+            &:hover {
+                color: vars.$gold;
+                transform: translateY(-2px);
+            }
+        }
     }
-    .contact-info a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        color: white;
-        text-decoration: none;
-        font-size: 1.1rem;
-        transition: color 0.3s ease;
-    }
-    .contact-info a:hover {
-        color: #e5c35c; /* Ta couleur dorée */
-    }
+
     .copyright {
         font-size: 0.9rem;
         opacity: 0.7;
-    }
-
-    .contact-info img {
-        display: block;
-        width: 1.4rem;
-        height: 1.4rem;
     }
 </style>

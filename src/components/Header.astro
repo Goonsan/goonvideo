@@ -12,14 +12,20 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
             </a>
         </div>
         
-        <button class="burger-menu" aria-label="Ouvrir le menu">
+        <button
+            class="burger-menu" 
+            aria-label="Menu principal" 
+            aria-expanded="false" 
+            aria-controls="main-nav"
+        >
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <nav class="nav">
-            <a href="/" class={currentPath === "" ? "active" : ""}>Home</a>
+        <nav id="main-nav" class="nav">
+            <a href="/" class={currentPath === "" ? "active" : ""} 
+               aria-current={currentPath === "" ? "page" : undefined}>Home</a>
             <a href="/portfolio" class={currentPath === "/portfolio" ? "active" : ""}>Portfolio</a>
             <a href="/tarifs" class={currentPath === "/tarifs" ? "active" : ""}>Tarifs</a>
             <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>Contact</a>
@@ -51,14 +57,66 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
 </header>
 
 <script>
-    // Petit script pour ouvrir/fermer le menu sur mobile
-    const burger = document.querySelector('.burger-menu');
-    const nav = document.querySelector('.nav');
+    function setupHeader() {
+        const burger = document.querySelector('.burger-menu');
+        const nav = document.querySelector('.nav');
 
-    burger?.addEventListener('click', () => {
-        burger.classList.toggle('active');
-        nav?.classList.toggle('active');
-    });
+        if (!burger || !nav) return;
+
+        // Gestion du clic Burger
+        burger.addEventListener('click', () => {
+            const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+            const nextState = !isExpanded;
+            
+            burger.setAttribute('aria-expanded', String(nextState));
+            burger.classList.toggle('active');
+            nav.classList.toggle('active');
+            
+            // MAGIC: On retire 'inert' si ouvert, on l'ajoute si fermé
+            if (nextState) {
+                nav.removeAttribute('inert');
+                document.addEventListener('keydown', handleFocusTrap);
+            } else {
+                nav.setAttribute('inert', '');
+                document.removeEventListener('keydown', handleFocusTrap);
+            }
+        });
+
+        function handleFocusTrap(e) {
+            if (e.key === 'Escape') {
+                // Fermeture avec Echap
+                closeMenu();
+                return;
+            }
+
+            if (e.key !== 'Tab') return;
+
+            const focusableElements = [burger, ...nav.querySelectorAll('a, button')];
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            } else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+            }
+        }
+
+        function closeMenu() {
+            burger.setAttribute('aria-expanded', 'false');
+            burger.classList.remove('active');
+            nav.classList.remove('active');
+            nav.setAttribute('inert', '');
+            document.removeEventListener('keydown', handleFocusTrap);
+            burger.focus();
+        }
+    }
+
+    // Support pour Astro (chargement initial + transitions)
+    setupHeader();
+    document.addEventListener('astro:page-load', setupHeader);
 </script>
 
 <style lang="scss">
@@ -219,10 +277,13 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
             justify-content: center;
             transition: 0.3s ease;
             box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            visibility: hidden; // Sécurité supplémentaire : cache le menu du flux visuel/focus
+            transition: right 0.3s ease, visibility 0.3s ease;
 
             &.active {
                 right: 0;
                 display: flex;
+                visibility: visible;
             }
         }
     }
