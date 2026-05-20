@@ -15,6 +15,27 @@ const { title } = Astro.props;
 		<link rel="manifest" href="/site.webmanifest">
 		<title>{title}</title>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+		<!-- JSON-LD : Données structurées pour Google -->
+		<script type="application/ld+json" is:inline>
+		{
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Goon Video",
+			"alternateName": "Goonvideo",
+			"url": "https://goonvideo.fr",
+			"logo": "https://goonvideo.fr/apple-touch-icon.png",
+			"image": "https://goonvideo.fr/apple-touch-icon.png",
+			"address": {
+			"@type": "PostalAddress",
+			"addressLocality": "Nantes",
+			"addressRegion": "Loire-Atlantique",
+			"addressCountry": "FR"
+			},
+			"sameAs": [
+			"https://www.mariages.net/video-mariage/goon--e399735/avis"
+			]
+		}
+		</script>
 	</head>
 	<body>
 		<slot /> </body>
