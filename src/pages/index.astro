@@ -150,16 +150,29 @@ import Footer from '../components/Footer.astro';
     </section>
      -->
 
+    <!--
     <section class="google-reviews">
         <div class="container">
             <h2 class="section-title">Ils m'ont fait confiance</h2>
-            
-            <!-- Conteneur du widget -->
+        
             <div class="reviews-wrapper">
 
                 <script defer async src='https://cdn.trustindex.io/loader.js?766192671d84372ad096972c830'></script>
-                <!-- wordpress shortcode [trustindex data-widget-id=766192671d84372ad096972c830] -->
-                <!-- COPIE TON CODE ICI -->
+            </div>
+        </div>
+    </section>
+    -->
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Ils m'ont fait confiance</h2>
+            
+            <div class="reviews-wrapper">
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-3f79f715-f938-4ed5-9ab9-f1e90a40b554" data-elfsight-app-lazy></div>
+            </div>
+            
+            <div class="mariages-widget">
             </div>
         </div>
     </section>
@@ -347,5 +360,14 @@ import Footer from '../components/Footer.astro';
         .features-grid {
             display: block;
         }
+    }
+
+    //widget avis
+    .reviews-wrapper {
+        min-height: 200px; 
+        margin-bottom: 2rem;
+    }
+    .es-widget-title-container {
+        display: none;
     }
 </style>
