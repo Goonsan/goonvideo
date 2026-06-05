@@ -1,0 +1,13 @@
+---
+// src/components/GoogleReviews.astro
+import reviews from '../data/google-reviews.json';
+
+// Debug pour voir ce que Node reçoit dans ta console de terminal
+console.log("Mes avis chargés :", reviews);
+---
+
+<section style="background: red; padding: 50px; color: white; text-align: center; z-index: 9999; position: relative;">
+  <h2>⚠️ TEST DE LA SECTION AVIS ⚠️</h2>
+  <p>Si tu vois ce gros bloc rouge, le composant est bien importé dans index.astro !</p>
+  <p>Nombre d'avis trouvés : {reviews ? reviews.length : "ZÉRO (Problème de JSON)"}</p>
+</section>
