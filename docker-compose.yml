@@ -7,18 +7,29 @@ services:
     restart: always
     volumes:
       - ./dist:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       - proxy-network # On utilise le nom interne défini en bas
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.goon-video.rule=Host(`goonvideo.fr`) || Host(`www.goonvideo.fr`)"
-      
-      # Configuration SSL (Le Cadenas)
+
+      # Router principal : domaine canonique (sans www)
+      - "traefik.http.routers.goon-video.rule=Host(`goonvideo.fr`)"
       - "traefik.http.routers.goon-video.entrypoints=websecure"
       - "traefik.http.routers.goon-video.tls=true"
       - "traefik.http.routers.goon-video.tls.certresolver=myresolver"
 
-      # Redirection automatique HTTP -> HTTPS
+      # Router www : redirige en permanence vers le domaine sans www
+      - "traefik.http.routers.goon-video-www.rule=Host(`www.goonvideo.fr`)"
+      - "traefik.http.routers.goon-video-www.entrypoints=websecure"
+      - "traefik.http.routers.goon-video-www.tls=true"
+      - "traefik.http.routers.goon-video-www.tls.certresolver=myresolver"
+      - "traefik.http.routers.goon-video-www.middlewares=www-to-apex"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.regex=^https://www\\.goonvideo\\.fr/(.*)"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.replacement=https://goonvideo.fr/$${1}"
+      - "traefik.http.middlewares.www-to-apex.redirectregex.permanent=true"
+
+      # Redirection automatique HTTP -> HTTPS (les deux hosts)
       - "traefik.http.routers.goon-video-http.rule=Host(`goonvideo.fr`) || Host(`www.goonvideo.fr`)"
       - "traefik.http.routers.goon-video-http.entrypoints=web"
       - "traefik.http.routers.goon-video-http.middlewares=astro-redirect"
