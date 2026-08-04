@@ -39,6 +39,8 @@ const ogImageURL = new URL(image, "https://goonvideo.fr");
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
 
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 		<!-- JSON-LD : Données structurées pour Google -->
 		<script type="application/ld+json" is:inline>
@@ -56,8 +58,12 @@ const ogImageURL = new URL(image, "https://goonvideo.fr");
 			"addressRegion": "Loire-Atlantique",
 			"addressCountry": "FR"
 			},
+			"areaServed": ["Nantes", "Loire-Atlantique", "Grand Ouest"],
+			"priceRange": "250€ - 2000€",
 			"sameAs": [
-			"https://www.mariages.net/video-mariage/goon--e399735/avis"
+			"https://www.mariages.net/video-mariage/goon--e399735/avis",
+			"https://www.instagram.com/oliviergonnet.video",
+			"https://www.youtube.com/@OlivierGonnet"
 			]
 		}
 		</script>
