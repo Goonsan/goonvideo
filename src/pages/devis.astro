@@ -47,9 +47,19 @@ import Footer from '../components/Footer.astro';
                 <span class="badge">Spécial Mariage</span>
                 <h2>Préparons ensemble votre film de mariage</h2>
                 <p>Pour que je puisse comprendre l'ambiance de votre union, merci de remplir ce questionnaire détaillé :</p>
-                
-                <iframe title="Formulaire de devis mariage" src="https://docs.google.com/forms/d/e/1FAIpQLSf-OMgKnKGz7c8TbyxwQGwyG83e3WEvZFTBcmmv4LYZu-nf5A/viewform?embedded=true" width="100%" height="5201" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+
+                <div id="gform-wrapper" class="gform-wrapper">
+                    <button type="button" id="load-gform" class="btn-yellow">Charger le formulaire</button>
+                    <p class="gform-note">Formulaire hébergé par Google Forms — ne se charge qu'après votre clic.</p>
+                </div>
             </div>
+
+            <script is:inline>
+            document.getElementById('load-gform')?.addEventListener('click', function () {
+                document.getElementById('gform-wrapper').innerHTML =
+                    '<iframe title="Formulaire de devis mariage" src="https://docs.google.com/forms/d/e/1FAIpQLSf-OMgKnKGz7c8TbyxwQGwyG83e3WEvZFTBcmmv4LYZu-nf5A/viewform?embedded=true" width="100%" height="5201" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>';
+            });
+            </script>
 
         </section>
     </main>
@@ -128,5 +138,18 @@ import Footer from '../components/Footer.astro';
     .form-container {
         margin-top: 5rem; // On espace bien de la partie mail
         // ... reste de ton style
+    }
+
+    .gform-wrapper {
+        margin-top: 2rem;
+        padding: 3rem 1rem;
+        border: 1px dashed rgba(vars.$gold, 0.3);
+        border-radius: 15px;
+
+        .gform-note {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
     }
 </style>

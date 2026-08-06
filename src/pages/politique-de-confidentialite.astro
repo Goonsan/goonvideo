@@ -1,0 +1,133 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+    title="Politique de confidentialité - GOONVIDEO"
+    description="Politique de confidentialité de Goon Video : données collectées, cookies et traceurs utilisés, et vos droits."
+>
+    <Header />
+    <main id="main-content" class="legal-page">
+        <section class="container">
+            <h1>Politique de confidentialité</h1>
+            <p class="updated">Dernière mise à jour : 7 août 2026</p>
+
+            <h2>1. Qui sommes-nous ?</h2>
+            <p>
+                Ce site est édité par Olivier Gonnet (Goon Video), vidéaste basé à Nantes.
+                Pour toute question relative à vos données personnelles, vous pouvez me contacter à
+                l'adresse <a href="mailto:oliviergonnet.video@gmail.com">oliviergonnet.video@gmail.com</a>.
+            </p>
+
+            <h2>2. Données collectées</h2>
+            <p>
+                <strong>Contact par e-mail :</strong> les liens « Envoyer un message » ouvrent directement
+                votre messagerie. Aucune donnée n'est enregistrée ou stockée par ce site à cette occasion :
+                votre message part directement depuis votre propre boîte mail.
+            </p>
+            <p>
+                <strong>Demande de devis :</strong> le formulaire de la page Devis est un Google Forms intégré.
+                Les informations que vous y saisissez (nom, date, description de votre projet...) sont transmises
+                et hébergées par Google Ireland Limited, conformément à la
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité de Google</a>.
+                Elles me sont ensuite transmises pour vous répondre.
+            </p>
+
+            <h2>3. Cookies et traceurs</h2>
+            <p>Ce site utilise, selon votre consentement, les services suivants :</p>
+            <ul>
+                <li>
+                    <strong>Cloudflare Web Analytics</strong> — mesure d'audience anonyme, sans cookie ni
+                    identifiant permettant de vous suivre individuellement. Ce service est exempté de consentement
+                    au sens de la réglementation applicable et fonctionne en permanence.
+                </li>
+                <li>
+                    <strong>Google Analytics</strong> — mesure d'audience détaillée (pages visitées, provenance du
+                    trafic). Dépose des cookies et n'est activé qu'après votre consentement via le bandeau prévu
+                    à cet effet.
+                </li>
+                <li>
+                    <strong>Avis clients (Elfsight et Mariages.net)</strong> — widgets affichant nos avis clients
+                    sur la page d'accueil. Ces services tiers ne se chargent qu'après votre consentement.
+                </li>
+                <li>
+                    <strong>Vidéos YouTube (portfolio)</strong> — les vidéos ne se chargent qu'après un clic
+                    volontaire de votre part sur une vignette, via le mode « confidentialité renforcée » de
+                    YouTube (youtube-nocookie.com), qui limite le dépôt de cookies tant que vous n'interagissez
+                    pas avec le lecteur.
+                </li>
+            </ul>
+            <p>
+                Vous pouvez à tout moment modifier vos choix en cliquant sur le bouton
+                <button type="button" id="manage-cookies" class="link-button">Gérer mes préférences de cookies</button>,
+                visible en bas de chaque page.
+            </p>
+
+            <h2>4. Durée de conservation</h2>
+            <p>
+                Les données transmises via le formulaire de devis sont conservées le temps nécessaire au
+                traitement de votre demande, puis supprimées. Votre choix de cookies est conservé 6 mois avant
+                de vous être à nouveau demandé.
+            </p>
+
+            <h2>5. Vos droits</h2>
+            <p>
+                Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit
+                d'accès, de rectification, d'effacement et d'opposition sur vos données personnelles. Pour l'exercer,
+                contactez-moi à <a href="mailto:oliviergonnet.video@gmail.com">oliviergonnet.video@gmail.com</a>.
+                Vous pouvez également introduire une réclamation auprès de la
+                <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.
+            </p>
+
+            <h2>6. Hébergement</h2>
+            <p>
+                Ce site est hébergé par OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.
+            </p>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<script is:inline>
+document.getElementById('manage-cookies')?.addEventListener('click', () => {
+    if (typeof tarteaucitron !== 'undefined') {
+        tarteaucitron.userInterface.openPanel();
+    }
+});
+</script>
+
+<style lang="scss">
+    @use "../styles/variables" as vars;
+
+    .legal-page { padding: 150px 1rem 80px; }
+    .container { max-width: 800px; margin: 0 auto; }
+
+    h1 { color: vars.$gold; font-size: 2.4rem; margin-bottom: 0.5rem; }
+    .updated { opacity: 0.6; font-size: 0.9rem; margin-bottom: 3rem; }
+
+    h2 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+
+    p, li { line-height: 1.7; opacity: 0.85; }
+    ul { padding-left: 1.5rem; }
+    li { margin-bottom: 0.8rem; }
+
+    a { color: vars.$gold; text-decoration: underline; }
+
+    .link-button {
+        background: none;
+        border: none;
+        padding: 0;
+        color: vars.$gold;
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: inherit;
+        font-family: inherit;
+    }
+
+    @media (max-width: 768px) {
+        .legal-page { padding: 120px 1rem 60px; }
+        h1 { font-size: 1.9rem; }
+    }
+</style>

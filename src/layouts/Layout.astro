@@ -54,7 +54,9 @@ const ogImageURL = new URL(image, "https://goonvideo.fr");
 			"image": "https://goonvideo.fr/apple-touch-icon.png",
 			"address": {
 			"@type": "PostalAddress",
-			"addressLocality": "Nantes",
+			"streetAddress": "10 rue du Berligout",
+			"postalCode": "44880",
+			"addressLocality": "Sautron",
 			"addressRegion": "Loire-Atlantique",
 			"addressCountry": "FR"
 			},
@@ -68,9 +70,61 @@ const ogImageURL = new URL(image, "https://goonvideo.fr");
 		}
 		</script>
 
-		<!-- Cloudflare Web Analytics -->
+		<!-- Cloudflare Web Analytics (sans cookie, pas de consentement requis) -->
 		<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1ff04095aec8484381012abc4a3ed602"}' is:inline></script>
 		<!-- End Cloudflare Web Analytics -->
+
+		<!-- Bandeau de consentement RGPD (tarteaucitron, auto-hébergé) -->
+		<script src="/tarteaucitron/tarteaucitron.min.js" is:inline></script>
+		<script is:inline>
+		tarteaucitron.init({
+			privacyUrl: "/politique-de-confidentialite/",
+			bodyPosition: "bottom",
+			hashtag: "#tarteaucitron",
+			cookieName: "tarteaucitron",
+			orientation: "bottom",
+			groupServices: false,
+			showAlertSmall: false,
+			cookieslist: false,
+			showIcon: true,
+			iconPosition: "BottomRight",
+			adblocker: false,
+			DenyAllCta: true,
+			AcceptAllCta: true,
+			highPrivacy: true,
+			handleBrowserDNTRequest: false,
+			removeCredit: false,
+			moreInfoLink: true,
+			useExternalCss: false,
+			useExternalJs: false,
+			readmoreLink: "/politique-de-confidentialite/",
+			mandatory: true,
+			mandatoryCta: true
+		});
+
+		// Google Analytics (GA4) — ne se charge qu'après consentement
+		tarteaucitron.services.gtag = {
+			key: "gtag",
+			type: "analytic",
+			name: "Google Analytics",
+			uri: "https://policies.google.com/privacy",
+			needConsent: true,
+			cookies: ["_ga", "_ga_*", "_gid", "_gat"],
+			js: function () {
+				"use strict";
+				window.dataLayer = window.dataLayer || [];
+				window.gtag = function () { dataLayer.push(arguments); };
+				gtag("js", new Date());
+				gtag("config", "G-X3TFLQW7SH", { anonymize_ip: true });
+
+				var s = document.createElement("script");
+				s.async = true;
+				s.src = "https://www.googletagmanager.com/gtag/js?id=G-X3TFLQW7SH";
+				document.head.appendChild(s);
+			}
+		};
+		(tarteaucitron.job = tarteaucitron.job || []).push("gtag");
+		</script>
 	</head>
 	<body>
 		<a href="#main-content" class="skip-link">Aller au contenu principal</a>

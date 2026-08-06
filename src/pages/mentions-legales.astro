@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+    title="Mentions légales - GOONVIDEO"
+    description="Mentions légales du site Goon Video : édition, hébergement et propriété intellectuelle."
+>
+    <Header />
+    <main id="main-content" class="legal-page">
+        <section class="container">
+            <h1>Mentions légales</h1>
+
+            <h2>Éditeur du site</h2>
+            <p>
+                Le site goonvideo.fr est édité par GOONVIDEO (Olivier Gonnet).<br />
+                Statut juridique : Entrepreneur Individuel / Micro-entreprise<br />
+                Numéro SIRET : 988 931 481 00010<br />
+                Adresse professionnelle : 10 rue du Berligout, 44880 Sautron<br />
+                E-mail : <a href="mailto:oliviergonnet.video@gmail.com">oliviergonnet.video@gmail.com</a><br />
+                Téléphone : <a href="tel:0644237989">06 44 23 79 89</a>
+            </p>
+
+            <h2>Directeur de la publication</h2>
+            <p>Olivier Gonnet.</p>
+
+            <h2>Hébergement</h2>
+            <p>
+                Ce site est hébergé par OVH SAS<br />
+                2 rue Kellermann, 59100 Roubaix, France<br />
+                RCS Lille Métropole 424 761 419 00045
+            </p>
+
+            <h2>Propriété intellectuelle</h2>
+            <p>
+                L'ensemble des contenus présents sur ce site (textes, images, vidéos, logo) est la propriété
+                d'Olivier Gonnet, sauf mention contraire, et ne peut être reproduit sans autorisation préalable.
+            </p>
+
+            <h2>Données personnelles</h2>
+            <p>
+                Pour en savoir plus sur le traitement de vos données personnelles et les cookies utilisés,
+                consultez notre <a href="/politique-de-confidentialite/">politique de confidentialité</a>.
+            </p>
+        </section>
+    </main>
+    <Footer />
+</Layout>
+
+<style lang="scss">
+    @use "../styles/variables" as vars;
+
+    .legal-page { padding: 150px 1rem 80px; }
+    .container { max-width: 800px; margin: 0 auto; }
+
+    h1 { color: vars.$gold; font-size: 2.4rem; margin-bottom: 2rem; }
+    h2 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+
+    p { line-height: 1.7; opacity: 0.85; }
+    a { color: vars.$gold; text-decoration: underline; }
+
+    @media (max-width: 768px) {
+        .legal-page { padding: 120px 1rem 60px; }
+        h1 { font-size: 1.9rem; }
+    }
+</style>

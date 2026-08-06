@@ -173,9 +173,30 @@ import GoogleReviews from '../components/GoogleReviews.astro';
             <h2 class="section-title">Ils m'ont fait confiance</h2>
             
             <div class="reviews-wrapper">
-            <script src="https://elfsightcdn.com/platform.js" async></script>
             <div class="elfsight-app-3f79f715-f938-4ed5-9ab9-f1e90a40b554" data-elfsight-app-lazy></div>
             </div>
+
+            <script is:inline>
+            // Avis clients (Elfsight) — ne se charge qu'après consentement
+            tarteaucitron.services.elfsight = {
+                key: "elfsight",
+                type: "other",
+                name: "Avis clients (Elfsight)",
+                uri: "https://elfsight.com/privacy-policy/",
+                needConsent: true,
+                cookies: [],
+                js: function () {
+                    var s = document.createElement("script");
+                    s.src = "https://elfsightcdn.com/platform.js";
+                    s.async = true;
+                    document.body.appendChild(s);
+                },
+                fallback: function () {
+                    tarteaucitron.fallback(["elfsight-app-3f79f715-f938-4ed5-9ab9-f1e90a40b554"], tarteaucitron.engage("elfsight"));
+                }
+            };
+            (tarteaucitron.job = tarteaucitron.job || []).push("elfsight");
+            </script>
             
             <div class="mariages-widget">
             </div>
@@ -193,7 +214,7 @@ import GoogleReviews from '../components/GoogleReviews.astro';
             <h2 class="section-title">Le choix parfait pour leur mariage</h2>
             
             <div class="testimonials-grid">
-                <div id="wp-widget-reviews">
+                <div id="wp-widget-reviews" class="mariagesnet-widget">
                     <div id="wp-widget-preview">
                         Lire <a href="https://www.mariages.net/video-mariage/goon--e399735/avis" rel="nofollow">nos avis</a> sur &nbsp;
                         <a href='https://www.mariages.net' rel="nofollow">
@@ -202,20 +223,30 @@ import GoogleReviews from '../components/GoogleReviews.astro';
                     </div>
                 </div>
 
-                <script is:inline src="https://cdn1.mariages.net/js/wp-widget.js?symfnw-FR48-1-20260424-001-0_www_m_"></script>
-                
                 <script is:inline>
-                    // On attend que le DOM soit prêt pour être sûr que le div existe
-                    document.addEventListener('astro:page-load', () => {
-                        if (typeof wpShowReviews === 'function') {
-                            wpShowReviews(399735, "black");
-                        }
-                    });
-                    
-                    // Fallback pour le premier chargement sans View Transitions
-                    if (typeof wpShowReviews === 'function') {
-                        wpShowReviews(399735, "black");
+                // Avis clients (Mariages.net) — ne se charge qu'après consentement
+                tarteaucitron.services.mariagesnet = {
+                    key: "mariagesnet",
+                    type: "other",
+                    name: "Avis clients (Mariages.net)",
+                    uri: "https://www.mariages.net/politique-de-confidentialite",
+                    needConsent: true,
+                    cookies: [],
+                    js: function () {
+                        var s = document.createElement("script");
+                        s.src = "https://cdn1.mariages.net/js/wp-widget.js?symfnw-FR48-1-20260424-001-0_www_m_";
+                        s.onload = function () {
+                            if (typeof wpShowReviews === "function") {
+                                wpShowReviews(399735, "black");
+                            }
+                        };
+                        document.body.appendChild(s);
+                    },
+                    fallback: function () {
+                        tarteaucitron.fallback(["mariagesnet-widget"], tarteaucitron.engage("mariagesnet"));
                     }
+                };
+                (tarteaucitron.job = tarteaucitron.job || []).push("mariagesnet");
                 </script>
             </div>
         </div>
@@ -376,10 +407,15 @@ import GoogleReviews from '../components/GoogleReviews.astro';
 
     //widget avis
     .reviews-wrapper {
-        min-height: 200px; 
+        min-height: 200px;
         margin-bottom: 2rem;
     }
     .es-widget-title-container {
         display: none;
+    }
+    .mariagesnet-widget {
+        min-height: 100px;
+        border-radius: 8px;
+        overflow: hidden;
     }
 </style>
