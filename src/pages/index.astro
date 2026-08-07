@@ -171,10 +171,13 @@ import GoogleReviews from '../components/GoogleReviews.astro';
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title">Ils m'ont fait confiance</h2>
-            
+
             <div class="reviews-wrapper">
             <div class="elfsight-app-3f79f715-f938-4ed5-9ab9-f1e90a40b554" data-elfsight-app-lazy></div>
             </div>
+            <p class="google-reviews-link">
+                <a href="https://share.google/Ovvgyh7M0fu1YtiZu" target="_blank" rel="noopener noreferrer">Voir tous mes avis sur Google →</a>
+            </p>
 
             <script is:inline>
             // Avis clients (Elfsight) — ne se charge qu'après consentement
@@ -417,5 +420,15 @@ import GoogleReviews from '../components/GoogleReviews.astro';
         min-height: 100px;
         border-radius: 8px;
         overflow: hidden;
+    }
+    .google-reviews-link {
+        text-align: center;
+        margin-top: 0.5rem;
+
+        a {
+            color: vars.$gold;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
     }
 </style>
