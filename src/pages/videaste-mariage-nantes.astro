@@ -1,0 +1,84 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const faq = [
+    {
+        q: 'Combien coûte un vidéaste de mariage à Nantes ?',
+        a: "Mes formules mariage vont de <strong>1000 €</strong> (la cérémonie et le vin d'honneur) à <strong>2000 €</strong> (des préparatifs à la fin du bal, drone inclus). La formule la plus choisie, à <strong>1500 €</strong>, couvre la journée de la cérémonie à la première danse. Des options permettent d'ajuster : drone (200 €), préparatifs (300 €) ou séance hors jour J (200 €).",
+    },
+    {
+        q: 'Les frais de déplacement sont-ils inclus ?',
+        a: "Oui, dans un rayon de 100 km autour de Nantes : toute la Loire-Atlantique, mais aussi Angers, Cholet ou La Roche-sur-Yon. Au-delà, les frais de déplacement sont indiqués sur devis.",
+    },
+    {
+        q: "Qu'est-ce que je reçois après le mariage ?",
+        a: "Votre film de mariage, un film long de 10 à 15 minutes qui raconte votre journée, ainsi qu'un teaser d'environ 60 secondes, idéal pour partager ce moment sur les réseaux sociaux.",
+    },
+    {
+        q: 'Proposez-vous des images par drone ?',
+        a: "Oui. Les prises de vue aériennes sont incluses dans le Pack Premium et disponibles en option à 200 € avec les autres formules, sous réserve de la météo et des autorisations de vol sur le lieu de réception.",
+    },
+    {
+        q: 'Peut-on tourner une séance en dehors du jour J ?',
+        a: "Oui, avec l'option « Séance hors jour J » (200 €) : une séance filmée à une autre date que celle du mariage.",
+    },
+    {
+        q: 'Comment réserver votre vidéaste mariage ?',
+        a: "Remplissez le questionnaire mariage sur la page <a href=\"/devis/\">Demander un devis</a> : je reviens vers vous sous 48 h avec une proposition personnalisée. N'hésitez pas à me contacter dès que votre date est fixée.",
+    },
+];
+---
+
+<ServiceLayout
+    title="Vidéaste Mariage à Nantes – Film de mariage 4K | Goon Video"
+    description="Vidéaste mariage à Nantes : film de mariage cinématographique en 4K à deux caméras, teaser 60 s, drone en option. Formules dès 1000 €, déplacement inclus à 100 km."
+    breadcrumbName="Vidéaste mariage"
+    eyebrow="Film de mariage · Loire-Atlantique"
+    heading="Vidéaste mariage à Nantes"
+    lead="Bien plus qu'un reportage : je réalise le film de votre mariage, avec une présence discrète pour capturer les instants volés, les regards et l'émotion de votre journée, à Nantes, en Loire-Atlantique et dans tout le Grand Ouest."
+    serviceName="Vidéaste mariage à Nantes"
+    serviceType="Vidéo de mariage"
+    videosTitle="Mes films de mariage"
+    videoCategories={['Mariage']}
+    pricingIds={['mariage']}
+    faq={faq}
+>
+    <h2>Un film de mariage qui vous ressemble</h2>
+    <p>
+        Je suis Olivier Gonnet, vidéaste indépendant installé aux portes de Nantes, à Sautron. Le jour J, je me fais discret
+        pour filmer votre journée telle que vous la vivez : l'effervescence des préparatifs, l'échange des vœux, les éclats
+        de rire du vin d'honneur, la première danse. Au montage, je construis un vrai récit, porté par la musique, pour que
+        votre film vous replonge dans l'émotion à chaque visionnage.
+    </p>
+    <p>
+        Issu du graphisme et de la bande dessinée, j'apporte un soin particulier à la composition et aux cadrages.
+        Musicien professionnel, je travaille le rythme et le son avec la même exigence que l'image. Le résultat : un film
+        de mariage cinématographique, pas une simple succession de plans.
+    </p>
+
+    <h2>Ce que comprend votre film de mariage</h2>
+    <ul>
+        <li>Un tournage à <strong>deux caméras</strong> en <strong>4K</strong> pour varier les points de vue pendant la cérémonie, les discours et la première danse.</li>
+        <li>Un <strong>film long de 10 à 15 minutes</strong> qui raconte toute votre journée.</li>
+        <li>Un <strong>teaser de 60 secondes</strong> à partager sur les réseaux sociaux.</li>
+        <li>Des <strong>images aériennes par drone</strong> en option (incluses dans le Pack Premium).</li>
+        <li>Un <strong>binôme sur le terrain</strong> : ma femme m'accompagne pour la logistique et la coordination, pour une présence fluide et discrète.</li>
+    </ul>
+
+    <h2>Comment ça se passe ?</h2>
+    <ol>
+        <li><strong>Le brief</strong> : vous remplissez le questionnaire mariage sur la page <a href="/devis/">devis</a> (date, lieux, ambiance, vos envies).</li>
+        <li><strong>La proposition</strong> : je reviens vers vous sous 48 h avec une proposition adaptée à votre journée et à votre budget.</li>
+        <li><strong>Le jour J</strong> : on cale ensemble le déroulé, puis je filme votre mariage en toute discrétion.</li>
+        <li><strong>Le film</strong> : je monte votre film et votre teaser avec soin, en faisant de la musique le fil conducteur du récit.</li>
+    </ol>
+
+    <h2>Où je filme votre mariage</h2>
+    <p>
+        Je filme des mariages à Nantes et dans toute la Loire-Atlantique : Saint-Herblain, Orvault, Rezé, Carquefou,
+        Vertou, Clisson, Ancenis, Pornic, Saint-Nazaire, La Baule et la presqu'île guérandaise… Les
+        <strong>frais de déplacement sont inclus dans un rayon de 100 km</strong> autour de Nantes, ce qui couvre aussi
+        Angers, Cholet ou La Roche-sur-Yon. Au-delà, je me déplace volontiers dans tout le Grand Ouest : les frais sont
+        alors précisés sur devis.
+    </p>
+</ServiceLayout>

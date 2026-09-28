@@ -8,7 +8,7 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
     <div class="header__inner">
         <div class="logo">
             <a href="/">
-                <img src="/images/logo-goon-video.svg" alt="GOONVIDEO logo" />
+                <img src="/images/logo-goon-video.svg" alt="Goon Video – Olivier Gonnet, vidéaste à Nantes (accueil)" />
             </a>
         </div>
         
@@ -26,32 +26,32 @@ const currentPath = pathname === "/" ? "" : pathname.replace(/\/$/, "");
         <nav id="main-nav" class="nav">
             <a href="/" class={currentPath === "" ? "active" : ""} 
                aria-current={currentPath === "" ? "page" : undefined}>Home</a>
-            <a href="/portfolio" class={currentPath === "/portfolio" ? "active" : ""}>Portfolio</a>
-            <a href="/tarifs" class={currentPath === "/tarifs" ? "active" : ""}>Tarifs</a>
-            <a href="/contact" class={currentPath === "/contact" ? "active" : ""}>Contact</a>
-            
+            <a href="/portfolio/" class={currentPath === "/portfolio" ? "active" : ""}>Portfolio</a>
+            <a href="/tarifs/" class={currentPath === "/tarifs" ? "active" : ""}>Tarifs</a>
+            <a href="/contact/" class={currentPath === "/contact" ? "active" : ""}>Contact</a>
+
             <div class="social-links mobile-only">
-                <a href="https://www.instagram.com/oliviergonnet.video" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/oliviergonnet.video" target="_blank" rel="noopener" aria-label="Instagram">
                     <img src="/svg/instagram-color.svg" height="24" alt="Instagram">
                 </a>
-                <a href="https://www.youtube.com/@OlivierGonnet" target="_blank" aria-label="YouTube">
+                <a href="https://www.youtube.com/@OlivierGonnet" target="_blank" rel="noopener" aria-label="YouTube">
                     <img src="/svg/youtube-color.svg" height="20" alt="Youtube">
                 </a>
             </div>
 
-            <a href="/devis" class="btn-yellow mobile-only-btn">DEMANDER UN DEVIS</a>
+            <a href="/devis/" class="btn-yellow mobile-only-btn">DEMANDER UN DEVIS</a>
         </nav>
-        
+
         <div class="header__actions desktop-only">
             <div class="social-links">
-                <a href="https://www.instagram.com/oliviergonnet.video" target="_blank" aria-label="Instagram">
+                <a href="https://www.instagram.com/oliviergonnet.video" target="_blank" rel="noopener" aria-label="Instagram">
                     <img src="/svg/instagram-color.svg" height="24" alt="Instagram">
                 </a>
-                <a href="https://www.youtube.com/@OlivierGonnet" target="_blank" aria-label="YouTube">
+                <a href="https://www.youtube.com/@OlivierGonnet" target="_blank" rel="noopener" aria-label="YouTube">
                     <img src="/svg/youtube-color.svg" height="20" alt="Youtube">
                 </a>
             </div>
-            <a href="/devis" class="btn-yellow">DEMANDER UN DEVIS</a>
+            <a href="/devis/" class="btn-yellow">DEMANDER UN DEVIS</a>
         </div>
     </div>
 </header>

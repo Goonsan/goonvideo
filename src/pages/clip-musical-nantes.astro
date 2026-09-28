@@ -1,0 +1,67 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const faq = [
+    {
+        q: 'Combien coûte un clip musical à Nantes ?',
+        a: "Comptez <strong>500 €</strong> pour une captation live ou de répétition (2 h sur place, montage synchronisé sur l'audio), <strong>800 €</strong> pour un clip simple (demi-journée de tournage, un lieu, montage créatif) et <strong>1500 €</strong> pour un clip avancé (une journée de tournage, plusieurs lieux, étalonnage et effets).",
+    },
+    {
+        q: 'Pouvez-vous filmer notre concert ou notre répétition ?',
+        a: "Oui. Je filme concerts, festivals et répétitions à plusieurs caméras, avec un montage rythmé. Pour une répétition ou une session live, le Pack Basique (500 €) est souvent adapté ; pour un concert ou un festival, je vous établis un devis selon la durée et le lieu.",
+    },
+    {
+        q: 'Pouvez-vous tourner dans plusieurs lieux ?',
+        a: "Oui, c'est ce que prévoit le Pack Premium : une journée de tournage sur plusieurs lieux, avec étalonnage et effets pour un rendu cinéma.",
+    },
+    {
+        q: 'Où tournez-vous ?',
+        a: "À Nantes et dans toute la Loire-Atlantique, et plus largement dans le Grand Ouest. Les conditions de déplacement sont précisées dans le devis.",
+    },
+    {
+        q: 'Comment démarrer mon projet de clip ?',
+        a: "Envoyez-moi votre morceau, vos idées et vos références depuis la page <a href=\"/contact/\">Contact</a> : je vous réponds sous 24 h pour en discuter.",
+    },
+];
+---
+
+<ServiceLayout
+    title="Clip Musical & Captation Live à Nantes | Goon Video"
+    description="Clips musicaux et captations live à Nantes : tournage multi-caméra, montage synchronisé sur votre son, étalonnage. Par un vidéaste musicien. Dès 500 €."
+    breadcrumbName="Clip musical"
+    eyebrow="Musiciens · Groupes · Artistes"
+    heading="Clip musical & captation live à Nantes"
+    lead="Vous êtes musicien, groupe ou artiste à Nantes ? Je réalise votre clip musical ou la captation live de votre concert ou de votre répétition, avec l'oreille d'un musicien professionnel et l'œil d'un réalisateur."
+    serviceName="Clip musical et captation live à Nantes"
+    serviceType="Réalisation de clip musical"
+    videosTitle="Musique & événements : mes réalisations"
+    videoCategories={['Musique', 'Sport']}
+    pricingIds={['clip']}
+    faq={faq}
+>
+    <h2>Un vidéaste qui parle votre langue</h2>
+    <p>
+        Avant d'être vidéaste, je suis musicien professionnel. Je sais ce que représente un morceau, l'importance d'un
+        placement rythmique, d'une respiration, d'un break. Au montage, chaque coupe tombe au bon moment : l'image sert la
+        musique, jamais l'inverse.
+    </p>
+    <p>
+        Mon passé dans le graphisme et la bande dessinée me permet aussi de penser votre clip en amont, comme un
+        storyboard : composition, angles de caméra, lumière, pour construire un univers visuel cohérent avec votre son.
+    </p>
+
+    <h2>Clip, live ou session : trois façons de filmer votre musique</h2>
+    <ul>
+        <li><strong>Captation live ou répétition</strong> : 2 h sur place, plusieurs caméras, montage synchronisé sur votre audio. Idéal pour une session live à publier sur YouTube ou les réseaux sociaux.</li>
+        <li><strong>Clip simple</strong> : une demi-journée de tournage dans un lieu, avec un montage créatif autour de votre morceau.</li>
+        <li><strong>Clip avancé</strong> : une journée de tournage sur plusieurs lieux, avec étalonnage et effets pour un rendu cinéma.</li>
+    </ul>
+
+    <h2>Concerts, festivals et aftermovies</h2>
+    <p>
+        Je filme aussi vos concerts, festivals et événements culturels ou sportifs à Nantes et dans le Grand Ouest : une
+        captation dynamique à plusieurs caméras, un montage rythmé et immersif et une attention particulière au son, pour
+        donner une seconde vie à vos moments forts avec un <strong>aftermovie</strong> percutant. Ces prestations sont
+        établies sur devis, selon la durée et le lieu.
+    </p>
+</ServiceLayout>

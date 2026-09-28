@@ -27,16 +27,16 @@
             </div>
         </div>
 
-        <h1 class="hero-title">DONNEZ VIE À VOS PROJETS, DE L'ÉMOTION À L'IMAGE.</h1>
-        
+        <p class="hero-title">DONNEZ VIE À VOS PROJETS, DE L'ÉMOTION À L'IMAGE.</p>
+
         <div class="hero-description">
-            <h2>Vidéaste - captation & montage</h2>
-            <p>Olivier Gonnet — Vidéaste spécialisé en captation et montage pour vos mariages, clips musicaux et projets d’entreprise.</p>
+            <h1>Vidéaste à Nantes · captation & montage</h1>
+            <p>Olivier Gonnet — Vidéaste spécialisé en captation et montage pour vos mariages, clips musicaux et projets d’entreprise, en Loire-Atlantique et dans le Grand Ouest.</p>
         </div>
 
         <div class="hero-buttons">
-            <a href="/portfolio" class="btn-yellow">DÉCOUVRIR MON UNIVERS</a>
-            <a href="/devis" class="btn-outlined">DEMANDER UN DEVIS</a>
+            <a href="/portfolio/" class="btn-yellow">DÉCOUVRIR MON UNIVERS</a>
+            <a href="/devis/" class="btn-outlined">DEMANDER UN DEVIS</a>
         </div>
     </div>
 </section>
@@ -93,18 +93,21 @@
     }
 
     .hero-title {
+        font-family: vars.$font-titles; // le slogan n'est plus un h1 : on reprend la police des titres
         font-size: clamp(1.8rem, 5vw, 3.2rem); // Taille fluide
         font-weight: 800;
         line-height: 1.1;
         text-transform: uppercase;
+        margin-top: 0.67em;
         margin-bottom: 1.5rem;
         color: white;
     }
 
     .hero-description {
-        h2 { 
-            font-size: 1.5rem; 
-            margin-bottom: 1rem; 
+        h1 {
+            font-size: 1.5rem;
+            margin-top: 0.83em; // mêmes marges que l'ancien h2
+            margin-bottom: 1rem;
             color: vars.$gold; 
             text-transform: uppercase;
         }
@@ -237,9 +240,10 @@
             transform: translate(0, 0);
             z-index: 0;
             object-fit: cover;
-            width: auto;
+            width: 100%;
             height: auto;
             max-width: 100%;
+            aspect-ratio: 1920 / 800; // réserve la place avant chargement (évite le décalage de mise en page)
         }
     }
 
@@ -251,7 +255,7 @@
         }
 
         .hero-description {
-            h2 { font-size: 1.2rem; }
+            h1 { font-size: 1.2rem; }
             p { font-size: 0.95rem; margin-bottom: 2rem; }
         }
 

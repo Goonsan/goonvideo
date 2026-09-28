@@ -1,36 +1,55 @@
 ---
-const videos = [
-  { id: 'AGcEAGJL-Lk', title: 'Mariage - Sintia & Maurice', category: 'Mariage' }, 
-  { id: 'fXsKkRrIpZE', title: 'Mariage - Anaïs & Baptiste', category: 'Mariage' },
-  { id: 'iKo0zDvqC8o', title: 'Shooting inspiration mariage bohème champêtre chic', category: 'Mariage' },   
-  { id: 'XIxziMQwV5Y', title: 'Mariage - Marjory & Christian', category: 'Mariage' },
-  { id: 'Vjv3ehNFkGk', title: 'Mariage - Chloé & Louis', category: 'Mariage' },
-  { id: 'NRXY9s8mrwg', title: 'Clip Musical - Dystonie', category: 'Musique' },
-  { id: 'iTCQW5TMQP4', title: 'Prestation Entreprise - Bien-être & Massage', category: 'Business' },
-  { id: 'NDr2XC1KnIA', title: 'Voyage sonore & relaxation - Bien-être & Massage', category: 'Business' },
-  { id: 'gD2jVxmrhaM', title: "Notre voyage au Japon", category: 'Voyages' },
-  { id: '1EEWf-xUXPg', title: "Sport - Au Cœur de l'Action", category: 'Sport' },
-  { id: 'WM4fPxxBw94', title: 'Tchaktchouka - Blues en cuisine', category: 'Lifestyle' },
-  { id: 'XuErLn2O0tA', title: 'Qui suis-je ? Storytelling & Vision', category: 'Portrait' },
-  { id: '46Wcgwy0lR4', title: 'Portrait de Manu Payet', category: 'Portrait' },
-];
+import { videos as allVideos, thumbnailUrl, type Video } from '../data/videos';
 
+interface Props {
+    categories?: Video['category'][]; // si renseigné : n'affiche que ces catégories, sans barre de filtres
+    level?: 2 | 3;                    // niveau de titre des vidéos
+}
+
+const { categories: only, level = 2 } = Astro.props;
+const videos = only ? allVideos.filter(v => only.includes(v.category)) : allVideos;
 const categories = ['Tous', ...new Set(videos.map(v => v.category))];
+const TitleTag = `h${level}` as 'h2' | 'h3';
+
+// Données structurées : chaque vidéo déclarée à Google (VideoObject)
+const videoSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: videos.map((video, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+            '@type': 'VideoObject',
+            name: video.title,
+            description: video.description,
+            thumbnailUrl: thumbnailUrl(video.id),
+            uploadDate: video.uploadDate,
+            duration: video.duration,
+            embedUrl: `https://www.youtube-nocookie.com/embed/${video.id}`,
+            contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
+            creator: { '@id': 'https://goonvideo.fr/#olivier-gonnet' },
+        },
+    })),
+};
 ---
 
+<script type="application/ld+json" is:inline set:html={JSON.stringify(videoSchema)} />
+
 <div class="portfolio-section">
-    <div class="filter-container" role="group" aria-label="Filtrer le portfolio par catégorie">
-        {categories.map(cat => (
-            <button
-                type="button"
-                class={cat === 'Tous' ? 'filter-btn active' : 'filter-btn'}
-                data-category={cat === 'Tous' ? 'all' : cat}
-                aria-pressed={cat === 'Tous' ? 'true' : 'false'}
-            >
-                {cat}
-            </button>
-        ))}
-    </div>
+    {!only && (
+        <div class="filter-container" role="group" aria-label="Filtrer le portfolio par catégorie">
+            {categories.map(cat => (
+                <button
+                    type="button"
+                    class={cat === 'Tous' ? 'filter-btn active' : 'filter-btn'}
+                    data-category={cat === 'Tous' ? 'all' : cat}
+                    aria-pressed={cat === 'Tous' ? 'true' : 'false'}
+                >
+                    {cat}
+                </button>
+            ))}
+        </div>
+    )}
 
     <div class="video-grid">
         {videos.map((video) => (
@@ -44,16 +63,18 @@ const categories = ['Tous', ...new Set(videos.map(v => v.category))];
                     aria-label={`Lire la vidéo : ${video.title}`}
                 >
                     <img
-                        src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                        src={thumbnailUrl(video.id)}
                         alt=""
                         loading="lazy"
+                        width="480"
+                        height="360"
                     />
                     <div class="play-overlay">
                         <span class="play-text">Lire la vidéo</span>
                     </div>
                     <div class="category-badge">{video.category}</div>
                 </div>
-                <h2>{video.title}</h2>
+                <TitleTag class="video-title">{video.title}</TitleTag>
             </div>
         ))}
     </div>
@@ -171,7 +192,7 @@ const categories = ['Tous', ...new Set(videos.map(v => v.category))];
         &:hover img { transform: scale(1.05); transition: 0.5s; }
     }
 
-    .video-card h2 { margin-top: 1rem; font-size: 1.1rem; color: white; }
+    .video-title { margin-top: 1rem; font-size: 1.1rem; color: white; }
     .category-badge {
         position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.7);
         color: $gold; padding: 4px 12px; font-size: 0.7rem; font-weight: bold;

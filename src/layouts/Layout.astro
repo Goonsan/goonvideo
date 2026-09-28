@@ -1,13 +1,143 @@
 ---
 // src/layouts/Layout.astro
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+	imageAlt?: string;
+	breadcrumbs?: { name: string; url: string }[]; // fil d'Ariane (hors accueil)
+	schema?: Record<string, unknown>[];              // données structurées propres à la page
+}
+
+const SITE = "https://goonvideo.fr";
+const BUSINESS_ID = `${SITE}/#business`;
+const PERSON_ID = `${SITE}/#olivier-gonnet`;
+const WEBSITE_ID = `${SITE}/#website`;
+
 const {
 	title,
 	description = "Olivier Gonnet, vidéaste à Nantes : captation et montage pour mariages, clips musicaux et vidéos d'entreprise en Loire-Atlantique et dans le Grand Ouest.",
-	image = "/apple-touch-icon.png",
+	image = "/images/og-goonvideo.jpg",
+	imageAlt = "Couple de mariés filmé par Goon Video, vidéaste mariage à Nantes",
+	breadcrumbs = [],
+	schema = [],
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, "https://goonvideo.fr");
-const ogImageURL = new URL(image, "https://goonvideo.fr");
+const canonicalURL = new URL(Astro.url.pathname, SITE);
+const ogImageURL = new URL(image, SITE);
+
+// Communes couvertes sans frais de déplacement (rayon de 100 km autour de Nantes)
+const cities = [
+	"Nantes", "Sautron", "Saint-Herblain", "Orvault", "Rezé", "Carquefou", "Vertou",
+	"Saint-Nazaire", "La Baule-Escoublac", "Pornic", "Clisson", "Ancenis-Saint-Géréon",
+	"Châteaubriant", "Cholet", "Angers", "La Roche-sur-Yon",
+];
+
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"@id": WEBSITE_ID,
+			"url": `${SITE}/`,
+			"name": "Goon Video",
+			"alternateName": ["Goonvideo", "Olivier Gonnet Vidéaste"],
+			"inLanguage": "fr-FR",
+			"publisher": { "@id": BUSINESS_ID },
+		},
+		{
+			"@type": "LocalBusiness",
+			"@id": BUSINESS_ID,
+			"name": "Goon Video",
+			"alternateName": "Goonvideo",
+			"description": "Vidéaste à Nantes : films de mariage, clips musicaux, vidéos d'entreprise et captations événementielles en Loire-Atlantique et dans le Grand Ouest. Tournage 4K à deux caméras, drone en option.",
+			"slogan": "Donnez vie à vos projets, de l'émotion à l'image.",
+			"url": `${SITE}/`,
+			"logo": `${SITE}/android-chrome-512x512.png`,
+			"image": [`${SITE}/images/og-goonvideo.jpg`, `${SITE}/android-chrome-512x512.png`],
+			"email": "oliviergonnet.video@gmail.com",
+			"founder": { "@id": PERSON_ID },
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "10 rue du Berligout",
+				"postalCode": "44880",
+				"addressLocality": "Sautron",
+				"addressRegion": "Loire-Atlantique",
+				"addressCountry": "FR",
+			},
+			"areaServed": [
+				...cities.map((name) => ({ "@type": "City", "name": name })),
+				{ "@type": "AdministrativeArea", "name": "Loire-Atlantique" },
+				{ "@type": "AdministrativeArea", "name": "Pays de la Loire" },
+				{
+					"@type": "GeoCircle",
+					"geoMidpoint": { "@type": "GeoCoordinates", "latitude": 47.2184, "longitude": -1.5536 },
+					"geoRadius": 100000,
+				},
+			],
+			"knowsAbout": [
+				"Vidéo de mariage", "Film de mariage", "Clip musical", "Captation de concert",
+				"Vidéo d'entreprise", "Film corporate", "Vidéo pour réseaux sociaux",
+				"Captation événementielle", "Montage vidéo", "Prise de vue par drone",
+			],
+			"priceRange": "250€ - 2000€",
+			"currenciesAccepted": "EUR",
+			"hasOfferCatalog": {
+				"@type": "OfferCatalog",
+				"name": "Prestations vidéo",
+				"itemListElement": [
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vidéaste mariage", "url": `${SITE}/videaste-mariage-nantes/` } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Clip musical et captation live", "url": `${SITE}/clip-musical-nantes/` } },
+					{ "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vidéo d'entreprise", "url": `${SITE}/video-entreprise-nantes/` } },
+				],
+			},
+			"sameAs": [
+				"https://www.mariages.net/video-mariage/goon--e399735/avis",
+				"https://www.instagram.com/oliviergonnet.video",
+				"https://www.youtube.com/@OlivierGonnet",
+				"https://share.google/Ovvgyh7M0fu1YtiZu",
+			],
+		},
+		{
+			"@type": "Person",
+			"@id": PERSON_ID,
+			"name": "Olivier Gonnet",
+			"jobTitle": "Vidéaste",
+			"description": "Vidéaste indépendant basé à Nantes, issu du graphisme et de la bande dessinée, et musicien professionnel.",
+			"url": `${SITE}/`,
+			"worksFor": { "@id": BUSINESS_ID },
+			"sameAs": [
+				"https://www.instagram.com/oliviergonnet.video",
+				"https://www.youtube.com/@OlivierGonnet",
+			],
+		},
+		{
+			"@type": "WebPage",
+			"@id": `${canonicalURL}#webpage`,
+			"url": canonicalURL.href,
+			"name": title,
+			"description": description,
+			"inLanguage": "fr-FR",
+			"isPartOf": { "@id": WEBSITE_ID },
+			"about": { "@id": BUSINESS_ID },
+			"primaryImageOfPage": ogImageURL.href,
+			...(breadcrumbs.length > 0 && { "breadcrumb": { "@id": `${canonicalURL}#breadcrumb` } }),
+		},
+		...(breadcrumbs.length > 0
+			? [{
+				"@type": "BreadcrumbList",
+				"@id": `${canonicalURL}#breadcrumb`,
+				"itemListElement": [{ name: "Accueil", url: "/" }, ...breadcrumbs].map((crumb, index) => ({
+					"@type": "ListItem",
+					"position": index + 1,
+					"name": crumb.name,
+					"item": new URL(crumb.url, SITE).href,
+				})),
+			}]
+			: []),
+		...schema,
+	],
+};
 ---
 
 <!DOCTYPE html>
@@ -20,8 +150,11 @@ const ogImageURL = new URL(image, "https://goonvideo.fr");
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
+		<meta name="theme-color" content="#030f25">
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<meta name="author" content="Olivier Gonnet" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 		<link rel="canonical" href={canonicalURL} />
 
 		<!-- Open Graph -->
@@ -30,46 +163,24 @@ const ogImageURL = new URL(image, "https://goonvideo.fr");
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={imageAlt} />
 		<meta property="og:locale" content="fr_FR" />
 		<meta property="og:site_name" content="Goon Video" />
 
 		<!-- Twitter Card -->
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
+		<meta name="twitter:image:alt" content={imageAlt} />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-		<!-- JSON-LD : Données structurées pour Google -->
-		<script type="application/ld+json" is:inline>
-		{
-			"@context": "https://schema.org",
-			"@type": "LocalBusiness",
-			"name": "Goon Video",
-			"alternateName": "Goonvideo",
-			"url": "https://goonvideo.fr",
-			"logo": "https://goonvideo.fr/apple-touch-icon.png",
-			"image": "https://goonvideo.fr/apple-touch-icon.png",
-			"address": {
-			"@type": "PostalAddress",
-			"streetAddress": "10 rue du Berligout",
-			"postalCode": "44880",
-			"addressLocality": "Sautron",
-			"addressRegion": "Loire-Atlantique",
-			"addressCountry": "FR"
-			},
-			"areaServed": ["Nantes", "Loire-Atlantique", "Grand Ouest"],
-			"priceRange": "250€ - 2000€",
-			"sameAs": [
-			"https://www.mariages.net/video-mariage/goon--e399735/avis",
-			"https://www.instagram.com/oliviergonnet.video",
-			"https://www.youtube.com/@OlivierGonnet",
-			"https://share.google/Ovvgyh7M0fu1YtiZu"
-			]
-		}
-		</script>
+		<!-- JSON-LD : Données structurées pour Google (entreprise, site, page, fil d'Ariane) -->
+		<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
 		<!-- Cloudflare Web Analytics (sans cookie, pas de consentement requis) -->
 		<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1ff04095aec8484381012abc4a3ed602"}' is:inline></script>

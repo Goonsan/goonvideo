@@ -7,8 +7,8 @@ import GoogleReviews from '../components/GoogleReviews.astro';
 ---
 
 <Layout
-    title="Goon Video | Vidéaste Mariage & Entreprise à Nantes"
-    description="Vidéaste à Nantes, Olivier Gonnet capture vos mariages, clips musicaux et vidéos d'entreprise en Loire-Atlantique et dans le Grand Ouest. Tournage 4K, montage cinéma."
+    title="Vidéaste à Nantes – Mariage, Clip & Entreprise | Goon Video"
+    description="Olivier Gonnet, vidéaste à Nantes : films de mariage, clips musicaux et vidéos d'entreprise en Loire-Atlantique et dans le Grand Ouest. Tournage 4K à deux caméras."
 >
     <Header />
     <main id="main-content">
@@ -21,7 +21,7 @@ import GoogleReviews from '../components/GoogleReviews.astro';
                     <span class="subtitle">Vidéaste Grand Ouest</span>
                     <h2>Capturer l'invisible, monter l'inoubliable</h2>
                     <p>
-                        Basé à <strong>Nantes</strong>, j'interviens en <strong>Loire-Atlantique</strong> et dans tout le <strong>Grand Ouest</strong>. Je suis Olivier Gonnet, un créateur de contenu passionné par l'humain et le storytelling.
+                        Basé à <strong>Nantes</strong>, j'interviens en <strong>Loire-Atlantique</strong> et dans tout le <strong>Grand Ouest</strong>, de Saint-Nazaire à Angers et de La Baule à Cholet. Je suis Olivier Gonnet, un créateur de contenu passionné par l'humain et le storytelling.
                     </p>
                     <p>
                         Mon approche ? Allier la technique de la <strong>vidéo 4K</strong> à une sensibilité artistique unique. Que ce soit pour un <strong>mariage cinématographique</strong> ou pour valoriser l'image de marque d'un <strong>entrepreneur</strong>, je mets l'émotion et la clarté au cœur de chaque image.
@@ -55,6 +55,7 @@ import GoogleReviews from '../components/GoogleReviews.astro';
                         <li>Film long (10-15 min)</li>
                         <li>Captation drone disponible en option</li>
                     </ul>
+                    <a href="/videaste-mariage-nantes/" class="card-link">Vidéaste mariage à Nantes →</a>
                 </div>
 
                 <div class="service-card">
@@ -66,6 +67,7 @@ import GoogleReviews from '../components/GoogleReviews.astro';
                         <li>Présentation de services & métiers</li>
                         <li>Contenu Reels / TikTok optimisé</li>
                     </ul>
+                    <a href="/video-entreprise-nantes/" class="card-link">Vidéo d'entreprise à Nantes →</a>
                 </div>
 
                 <div class="service-card">
@@ -77,6 +79,7 @@ import GoogleReviews from '../components/GoogleReviews.astro';
                         <li>Captation sonore haute fidélité</li>
                         <li>Multi-caméra pour ne rien rater</li>
                     </ul>
+                    <a href="/clip-musical-nantes/" class="card-link">Clip musical & captation live →</a>
                 </div>
             </div>
         </div>
@@ -90,7 +93,7 @@ import GoogleReviews from '../components/GoogleReviews.astro';
                  <p class="max-width-text">
                     La vidéo représente aujourd'hui la majorité du trafic web. Pour une entreprise à <strong>Nantes</strong> ou un futur couple de mariés, c'est le seul support capable de transmettre une émotion brute. Grâce à un tournage à <strong>deux caméras</strong>, j'offre une richesse visuelle qui multiplie les points de vue et rend votre message plus professionnel et captivant.
                 </p>
-                <a href="/contact" class="btn-gold">Discutons de votre projet</a>
+                <a href="/contact/" class="btn-gold">Discutons de votre projet</a>
             </div>
         </div>
     </section>
@@ -324,7 +327,14 @@ import GoogleReviews from '../components/GoogleReviews.astro';
             transform: translateY(-5px);
         }
         h3 { margin-bottom: 1rem; }
-        ul { 
+        .card-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: vars.$gold;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        ul {
             margin-top: 1.5rem; list-style: none; padding: 0;
             li { font-size: 0.9rem; opacity: 0.7; margin-bottom: 0.5rem; 
                 &::before { content: "→"; color: vars.$gold; margin-right: 10px; }

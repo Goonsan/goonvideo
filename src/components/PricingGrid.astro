@@ -1,101 +1,50 @@
 ---
 // src/components/PricingGrid.astro
+import { pricing, type PricingCategory } from '../data/pricing';
+
+interface Props {
+    categories?: PricingCategory[];
+    level?: 2 | 3;            // niveau de titre des catégories (h2 sur la page Tarifs, h3 dans une section)
+    showServiceLink?: boolean; // lien vers la page de prestation détaillée
+}
+
+const { categories = pricing, level = 2, showServiceLink = false } = Astro.props;
+const CategoryTag = `h${level}` as 'h2' | 'h3';
+const PackTag = `h${level + 1}` as 'h3' | 'h4';
 ---
 
 <section class="pricing-container">
-    <div class="category">
-        <h2 class="category-title"><span aria-hidden="true">💍</span> Mariage</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Pack Basique</h3>
-                <p class="price">1000 €</p>
-                <p class="desc">La cérémonie et le vin d'honneur</p>
+    {categories.map((category) => (
+        <div class="category">
+            <CategoryTag class="category-title"><span aria-hidden="true">{category.icon}</span> {category.title}</CategoryTag>
+            <div class="grid">
+                {category.packs.map((pack) => (
+                    <div class={pack.featured ? 'card featured' : 'card'}>
+                        {pack.featured && <div class="badge">Populaire</div>}
+                        <PackTag class="pack-name">{pack.name}</PackTag>
+                        <p class="price">{pack.price} €</p>
+                        <p class="desc">{pack.desc}</p>
+                        {pack.included && <span class="option_inclus">{pack.included}</span>}
+                    </div>
+                ))}
             </div>
-            <div class="card featured">
-                <div class="badge">Populaire</div>
-                <h3>Pack Standard</h3>
-                <p class="price">1500 €</p>
-                <p class="desc">De la cérémonie à la première danse</p>
-            </div>
-            <div class="card">
-                <h3>Pack Premium</h3>
-                <p class="price">2000 €</p>
-                <p class="desc">Des préparatifs à la fin du bal</p>
-                <span class="option_inclus">✓ Drone inclus</span>
-            </div>
+            {category.extras && (
+                <p class="extra">
+                    {category.extras.map((extra) => <span>{extra}</span>)}
+                </p>
+            )}
+            {category.note && (
+                <p class="travel-note">
+                    <span aria-hidden="true">📍</span> {category.note}
+                </p>
+            )}
+            {showServiceLink && (
+                <p class="service-link">
+                    <a href={category.serviceUrl}>En savoir plus sur la prestation {category.title.toLowerCase()} →</a>
+                </p>
+            )}
         </div>
-        <p class="extra">
-            <span>+ Option Drone : 200 €</span>
-            <span>+ Préparatifs : 300 €</span>
-            <span>+ Séance Hors Jour J : 200 €</span>
-        </p>
-        <p class="travel-note">
-            <span aria-hidden="true">📍</span> Frais de déplacement inclus dans un rayon de 100 km autour de Nantes. Au-delà, sur devis.
-        </p>
-    </div>
-
-    <div class="category">
-        <h2 class="category-title"><span aria-hidden="true">🎵</span> Clip Musical</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Pack Basique</h3>
-                <p class="price">500 €</p>
-                <p class="desc">Captation Live/Répétition, 2h sur place, montage synchro audio</p>
-            </div>
-            <div class="card">
-                <h3>Pack Standard</h3>
-                <p class="price">800 €</p>
-                <p class="desc">Clip simple, tournage 1/2 journée, 1 lieu, montage créatif</p>
-            </div>
-            <div class="card">
-                <h3>Pack Premium</h3>
-                <p class="price">1500 €</p>
-                <p class="desc">Clip avancé, tournage 1 journée, multi-lieux, étalonnage et effets</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="category">
-        <h2 class="category-title"><span aria-hidden="true">📱</span> Communication Récurrente</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Pack Basique</h3>
-                <p class="price">250 €</p>
-                <p class="desc">1 vidéo de 30 sec à 1 min, format vertical, sous-titres inclus</p>
-            </div>
-            <div class="card">
-                <h3>Pack Standard</h3>
-                <p class="price">450 €</p>
-                <p class="desc">1 vidéo de 1 à 2 min, habillage graphique et motion design</p>
-            </div>
-            <div class="card">
-                <h3>Pack Premium</h3>
-                <p class="price">850 €</p>
-                <p class="desc">Pack 1 mois de contenu, 1/2 journée de tournage, 4 vidéos courtes livrées</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="category">
-        <h2 class="category-title"><span aria-hidden="true">🏢</span> Film Vitrine & Identité</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>Pack Basique</h3>
-                <p class="price">450 €</p>
-                <p class="desc">Vidéo vitrine dynamique de 1 min, sans interview</p>
-            </div>
-            <div class="card">
-                <h3>Pack Standard</h3>
-                <p class="price">850 €</p>
-                <p class="desc">Vidéo de 1 à 2 min, storytelling</p>
-            </div>
-            <div class="card">
-                <h3>Pack Premium</h3>
-                <p class="price">1450 €</p>
-                <p class="desc">Film corporate, interviews avec éclairage et son pro</p>
-            </div>
-        </div>
-    </div>
+    ))}
 </section>
 
 <style lang="scss">
@@ -157,7 +106,7 @@
         text-transform: uppercase;
         border-radius: 20px;
     }
-    h3 { margin: 0; font-size: 1.3rem; opacity: 0.9; }
+    .pack-name { margin: 0; font-size: 1.3rem; opacity: 0.9; font-family: 'Playfair Display', serif; color: var(--gold, #e5c35c); }
     .price {
         font-size: 2.8rem;
         font-weight: 800;
@@ -199,6 +148,16 @@
         text-align: center;
         font-size: 0.85rem;
         opacity: 0.6;
+    }
+.service-link {
+        margin-top: 1.5rem;
+        text-align: center;
+
+        a {
+            color: var(--gold, #e5c35c);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
     }
 .option_inclus {
         margin-top: auto; /* Aligné en bas */

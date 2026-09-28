@@ -5,8 +5,9 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-    title="Contact - GOONVIDEO"
+    title="Contact – Vidéaste à Nantes | Goon Video"
     description="Discutons de votre projet vidéo : mariage, clip musical ou film d'entreprise. Olivier Gonnet, vidéaste à Nantes, vous répond sous 24h."
+    breadcrumbs={[{ name: 'Contact', url: '/contact/' }]}
 >
     <Header />
     <main id="main-content" class="contact-page">
@@ -16,6 +17,13 @@ import Footer from '../components/Footer.astro';
                 <p>Besoin d'un film de mariage, d'un clip ou d'une vidéo corporate ? Je réponds à toutes vos questions sous 24h.</p>
                 
                 <div class="info-list">
+                    <div class="info-item">
+                        <span aria-hidden="true">📍</span>
+                        <div>
+                            <strong>Zone d'intervention</strong>
+                            <p>Nantes, Loire-Atlantique &amp; Grand Ouest</p>
+                        </div>
+                    </div>
                     <!--<div class="info-item">
                         <span>📞</span>
                         <div>

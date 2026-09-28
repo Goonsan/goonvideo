@@ -1,0 +1,68 @@
+---
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+
+const faq = [
+    {
+        q: "Combien coûte une vidéo d'entreprise à Nantes ?",
+        a: "Un film vitrine démarre à <strong>450 €</strong> (vidéo dynamique d'une minute), <strong>850 €</strong> pour une vidéo storytelling d'une à deux minutes et <strong>1450 €</strong> pour un film corporate avec interviews, éclairage et son pro. Pour les réseaux sociaux, une vidéo courte démarre à <strong>250 €</strong>, et le pack d'un mois de contenu (demi-journée de tournage, 4 vidéos courtes) est à <strong>850 €</strong>.",
+    },
+    {
+        q: 'Proposez-vous des vidéos pour Instagram, TikTok ou les Reels ?',
+        a: "Oui : format vertical, sous-titres inclus et montage pensé pour les réseaux sociaux. Vous pouvez commander une vidéo à l'unité ou un pack d'un mois de contenu.",
+    },
+    {
+        q: "Filmez-vous les événements d'entreprise ?",
+        a: "Oui : soirées, lancements, événements professionnels… Je couvre vos événements à plusieurs caméras et vous livre un aftermovie à partager. Ces prestations sont établies sur devis, selon la durée et le lieu.",
+    },
+    {
+        q: 'Où intervenez-vous ?',
+        a: "À Nantes, dans toute la métropole et en Loire-Atlantique (Saint-Herblain, Orvault, Rezé, Carquefou, Saint-Nazaire…), et plus largement dans le Grand Ouest. Je me déplace dans vos locaux ou sur le lieu de votre événement.",
+    },
+    {
+        q: 'Comment se déroule un projet vidéo ?',
+        a: "On échange d'abord sur vos objectifs et votre public, je vous envoie une proposition sous 48 h, puis on fixe la date de tournage. Je m'occupe ensuite du montage, de l'habillage graphique et des sous-titres. Pour démarrer, rendez-vous sur la page <a href=\"/devis/\">Demander un devis</a>.",
+    },
+];
+---
+
+<ServiceLayout
+    title="Vidéo d'entreprise à Nantes : film vitrine & Reels | Goon Video"
+    description="Vidéaste pour les entreprises à Nantes : film vitrine, film corporate, interviews à deux caméras et vidéos courtes pour Instagram, TikTok et les Reels. Dès 250 €."
+    breadcrumbName="Vidéo d'entreprise"
+    eyebrow="Entrepreneurs · Commerces · Entreprises"
+    heading="Vidéo d'entreprise à Nantes"
+    lead="Je crée des vidéos qui humanisent votre activité, valorisent votre savoir-faire et rassurent vos futurs clients : film vitrine, interviews, contenus courts pour les réseaux sociaux ou couverture de vos événements, à Nantes et en Loire-Atlantique."
+    serviceName="Vidéo d'entreprise à Nantes"
+    serviceType="Production de vidéo d'entreprise"
+    videosTitle="Mes réalisations pour les professionnels"
+    videoCategories={['Business', 'Lifestyle']}
+    pricingIds={['vitrine', 'recurrent']}
+    faq={faq}
+>
+    <h2>Pourquoi la vidéo pour votre entreprise ?</h2>
+    <p>
+        La vidéo représente aujourd'hui la majorité du trafic web. C'est le support le plus efficace pour montrer qui vous
+        êtes, comment vous travaillez et ce qui vous différencie. En quelques secondes, une bonne vidéo crée ce qu'une page
+        de texte peine à installer : de la confiance.
+    </p>
+    <p>
+        Grâce à un tournage à <strong>deux caméras</strong>, vos interviews gagnent en rythme et en professionnalisme : on
+        alterne les plans, on garde l'attention, et votre message passe.
+    </p>
+
+    <h2>Mes prestations vidéo pour les professionnels</h2>
+    <ul>
+        <li><strong>Film vitrine</strong> : une vidéo dynamique d'une à deux minutes pour présenter votre activité sur votre site ou votre fiche Google.</li>
+        <li><strong>Film corporate & interviews</strong> : interviews multi-angles avec éclairage et son professionnels, pour donner la parole à vos équipes, vos clients ou à vous-même.</li>
+        <li><strong>Contenus pour les réseaux sociaux</strong> : vidéos courtes au format vertical, sous-titrées, pensées pour les Reels et TikTok, à l'unité ou en pack mensuel.</li>
+        <li><strong>Présentation de services et de métiers</strong> : montrer votre savoir-faire en action, au plus près du geste.</li>
+        <li><strong>Événementiel</strong> : captation de vos soirées, lancements ou événements d'entreprise, avec un aftermovie à partager.</li>
+    </ul>
+
+    <h2>Un exemple : VITA'YOGA à Sautron</h2>
+    <p>
+        Pour VITA'YOGA, à Sautron, j'ai réalisé deux vidéos courtes présentant ses soins (massage bien-être et voyage
+        sonore) pour faire ressentir l'expérience avant même de pousser la porte. Vous les retrouverez ci-dessous, avec
+        d'autres réalisations.
+    </p>
+</ServiceLayout>

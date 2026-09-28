@@ -6,8 +6,9 @@ import VideoGallery from '../components/VideoGallery.astro';
 ---
 
 <Layout
-    title="Portfolio | GOONVIDEO | Olivier Gonnet - Vidéaste à Nantes"
+    title="Portfolio : films de mariage & clips à Nantes | Goon Video"
     description="Découvrez les réalisations d'Olivier Gonnet : films de mariage, clips musicaux, vidéos d'entreprise et captations événementielles à Nantes et dans le Grand Ouest."
+    breadcrumbs={[{ name: 'Portfolio', url: '/portfolio/' }]}
 >
     <Header />
     <main id="main-content" class="portfolio-page">
@@ -15,6 +16,12 @@ import VideoGallery from '../components/VideoGallery.astro';
             <span class="subtitle">Réalisations</span>
             <h1 class="page-title">Portfolio Vidéo à Nantes</h1>
             <div class="title-underline"></div>
+            <p class="intro">
+                Films de mariage, clips et sessions live, vidéos pour les entreprises, sport, voyages et portraits :
+                une sélection de mes réalisations en Loire-Atlantique et ailleurs. En savoir plus sur mes prestations de
+                <a href="/videaste-mariage-nantes/">vidéaste mariage</a>, de <a href="/clip-musical-nantes/">clip musical</a>
+                et de <a href="/video-entreprise-nantes/">vidéo d'entreprise</a>.
+            </p>
         </header>
         
         <VideoGallery />
@@ -41,6 +48,14 @@ import VideoGallery from '../components/VideoGallery.astro';
         .page-title { font-size: 4rem; color: white; margin: 0; }
         .title-underline {
             width: 60px; height: 3px; background: vars.$gold; margin: 1.5rem auto 0;
+        }
+        .intro {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            padding: 0 1.5rem;
+            line-height: 1.8;
+            opacity: 0.85;
+            a { color: vars.$gold; text-decoration: underline; }
         }
     }
 

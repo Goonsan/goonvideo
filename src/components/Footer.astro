@@ -27,6 +27,13 @@
             </li>
         </ul>
     </nav>
+    <nav aria-label="Prestations" class="services-nav">
+        <a href="/videaste-mariage-nantes/">Vidéaste mariage à Nantes</a>
+        <a href="/clip-musical-nantes/">Clip musical à Nantes</a>
+        <a href="/video-entreprise-nantes/">Vidéo d'entreprise à Nantes</a>
+        <a href="/portfolio/">Portfolio</a>
+        <a href="/tarifs/">Tarifs</a>
+    </nav>
     <nav aria-label="Informations légales" class="legal-nav">
         <a href="/mentions-legales/">Mentions légales</a>
         <a href="/politique-de-confidentialite/">Politique de confidentialité</a>
@@ -87,6 +94,20 @@ document.getElementById('footer-manage-cookies')?.addEventListener('click', () =
     .copyright {
         font-size: 0.9rem;
         opacity: 0.7;
+    }
+
+    .services-nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+
+        a {
+            color: rgba(255, 255, 255, 0.85);
+            &:hover { color: vars.$gold; }
+        }
     }
 
     .legal-nav {
