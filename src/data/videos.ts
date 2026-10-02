@@ -13,6 +13,14 @@ export type Video = {
 
 export const videos: Video[] = [
     {
+        id: 'iKo0zDvqC8o',
+        title: 'Shooting inspiration mariage bohème champêtre chic',
+        category: 'Mariage',
+        description: "Shooting d'inspiration mariage au style bohème champêtre chic : préparatifs, cérémonie, vin d'honneur.",
+        uploadDate: '2026-09-11',
+        duration: 'PT2M18S',
+    },
+    {
         id: 'AGcEAGJL-Lk',
         title: 'Mariage - Sintia & Maurice',
         category: 'Mariage',
@@ -27,14 +35,6 @@ export const videos: Video[] = [
         description: "Film de mariage cinématique 4K d'Anaïs et Baptiste, une journée placée sous le signe de l'émotion et de la complicité.",
         uploadDate: '2026-04-21',
         duration: 'PT10M11S',
-    },
-    {
-        id: 'iKo0zDvqC8o',
-        title: 'Shooting inspiration mariage bohème champêtre chic',
-        category: 'Mariage',
-        description: "Shooting d'inspiration mariage au style bohème champêtre chic : préparatifs, cérémonie, vin d'honneur.",
-        uploadDate: '2026-09-11',
-        duration: 'PT2M18S',
     },
     {
         id: 'XIxziMQwV5Y',
