@@ -52,6 +52,14 @@ export const videos: Video[] = [
         uploadDate: '2026-06-08',
         duration: 'PT6M38S',
     },
+        {
+        id: 'nZoe62v4yT0',
+        title: 'Prêt à trembler ?',
+        category: 'Court-métrage',
+        description: "Découvrez mon dernier projet : une immersion terrifiante au cœur de l'horreur. Sensations fortes garanties. Regardez la vidéo à vos risques et périls...",
+        uploadDate: '2026-10-05',
+        duration: 'PT2M21S',
+    },
     {
         id: 'NRXY9s8mrwg',
         title: 'Clip Musical - Dystonie',
