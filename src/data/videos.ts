@@ -13,6 +13,14 @@ export type Video = {
 
 export const videos: Video[] = [
     {
+        id: 'XR3GvGvyQhU',
+        title: 'Shooting inspiration mariage Aperol Spritz',
+        category: 'Mariage',
+        description: "Shooting d'inspiration mariage aux couleurs de l'Aperol Spritz au Château de la Touche d'Amour : orange éclatant, lumière dorée et ambiance festive à l'italienne.",
+        uploadDate: '2026-10-08',
+        duration: 'PT4M28S',
+    },
+    {
         id: 'iKo0zDvqC8o',
         title: 'Shooting inspiration mariage bohème champêtre chic',
         category: 'Mariage',
