@@ -41,6 +41,8 @@ services:
       - "traefik.http.routers.towa-film-http.entrypoints=web"
       - "traefik.http.routers.towa-film-http.middlewares=astro-redirect"
       - "traefik.http.middlewares.astro-redirect.redirectscheme.scheme=https"
+      # Redirection permanente (301) et non temporaire (302) : c'est ce que Google attend pour http -> https
+      - "traefik.http.middlewares.astro-redirect.redirectscheme.permanent=true"
 
 networks:
   proxy-network:
