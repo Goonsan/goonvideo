@@ -1,11 +1,40 @@
 // src/styles/_variables.scss
-$gold: #e5c35c;
-$dark-blue: #030f25;
-$font-titles: 'Playfair Display', serif;
-$font-body: 'Plus Jakarta Sans', sans-serif;
+
+// Palette TOWA FILM
+$charcoal: #111111;                    // fond principal : laisse la place aux images
+$charcoal-soft: #181818;               // sections sombres en alternance
+$offwhite: #F5F2EC;                    // sections claires (avis)
+$red: #ab2c1b;                         // rouge exact du logo : bouton « Demander un devis » et petits accents
+$red-dark: #8f2416;                    // survol des boutons rouges
+$muted: rgba(255, 255, 255, 0.7);      // texte secondaire sur fond sombre
+$line: rgba(255, 255, 255, 0.12);      // filets et bordures discrètes sur fond sombre
+// Le rouge sur fond charbon n'atteint que 2.8:1 de contraste : on le garde pour les fonds de bouton
+// (texte blanc, 6.7:1) et les éléments décoratifs (filets, puces, soulignements), pas pour du texte.
+
+// Typographies : Cormorant Garamond (proche du slogan du logo) et Montserrat (proche de « FILM »)
+$font-titles: 'Cormorant Garamond', serif;
+$font-body: 'Montserrat', sans-serif;
 
 @mixin flex-center {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+// Lien de contenu : blanc, souligné de rouge
+@mixin content-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: $red;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+// Petit label en capitales espacées, dans l'esprit de « FILM » sur le logo
+@mixin label {
+    font-family: $font-body;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    font-weight: 500;
 }

@@ -20,8 +20,8 @@
                 </a>
             </li>
             <li>
-                <a href="https://share.google/Ovvgyh7M0fu1YtiZu" target="_blank" rel="noopener noreferrer" aria-label="Avis Google de Goon Video (ouvre un nouvel onglet)">
-                    <span aria-hidden="true">⭐</span>
+                <a href="https://share.google/Ovvgyh7M0fu1YtiZu" target="_blank" rel="noopener noreferrer" aria-label="Avis Google de Towa Film (ouvre un nouvel onglet)">
+                    <svg class="star" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>
                     Avis Google
                 </a>
             </li>
@@ -39,7 +39,7 @@
         <a href="/politique-de-confidentialite/">Politique de confidentialité</a>
         <button type="button" id="footer-manage-cookies" class="link-button">Gérer mes cookies</button>
     </nav>
-    <p class="copyright">© {new Date().getFullYear()} GOONVIDEO - Tous droits réservés.</p>
+    <p class="copyright">© {new Date().getFullYear()} TOWA FILM - Tous droits réservés.</p>
 </footer>
 
 <script is:inline>
@@ -54,11 +54,11 @@ document.getElementById('footer-manage-cookies')?.addEventListener('click', () =
     @use "../styles/variables" as vars;
 
     footer {
-        background-color: #050810;
+        background-color: #0b0b0b;
         color: white;
         padding: 3rem 1rem;
         text-align: center;
-        border-top: 1px solid rgba(vars.$gold, 0.6);
+        border-top: 1px solid vars.$line;
     }
 
     .contact-info {
@@ -77,15 +77,16 @@ document.getElementById('footer-manage-cookies')?.addEventListener('click', () =
             color: white;
             text-decoration: none;
             font-size: 1.1rem;
+            overflow-wrap: anywhere; // l'adresse e-mail peut passer à la ligne sur les très petits écrans
             transition: all 0.3s ease;
 
-            img {
+            img, .star {
                 width: 1.4rem;
                 height: 1.4rem;
             }
 
             &:hover {
-                color: vars.$gold;
+                color: vars.$muted;
                 transform: translateY(-2px);
             }
         }
@@ -105,8 +106,8 @@ document.getElementById('footer-manage-cookies')?.addEventListener('click', () =
         font-size: 0.9rem;
 
         a {
-            color: rgba(255, 255, 255, 0.85);
-            &:hover { color: vars.$gold; }
+            color: vars.$muted;
+            &:hover { color: white; }
         }
     }
 
@@ -122,7 +123,7 @@ document.getElementById('footer-manage-cookies')?.addEventListener('click', () =
             color: rgba(255, 255, 255, 0.6);
             text-decoration: underline;
 
-            &:hover { color: vars.$gold; }
+            &:hover { color: white; }
         }
 
         .link-button {

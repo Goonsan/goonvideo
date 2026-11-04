@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://goonvideo.fr/sitemap-index.xml
+Sitemap: https://towafilm.fr/sitemap-index.xml

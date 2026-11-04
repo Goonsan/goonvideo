@@ -14,25 +14,32 @@ services:
       - "traefik.enable=true"
 
       # Router principal : domaine canonique (sans www)
-      - "traefik.http.routers.goon-video.rule=Host(`goonvideo.fr`)"
-      - "traefik.http.routers.goon-video.entrypoints=websecure"
-      - "traefik.http.routers.goon-video.tls=true"
-      - "traefik.http.routers.goon-video.tls.certresolver=myresolver"
+      - "traefik.http.routers.towa-film.rule=Host(`towafilm.fr`)"
+      - "traefik.http.routers.towa-film.entrypoints=websecure"
+      - "traefik.http.routers.towa-film.tls=true"
+      - "traefik.http.routers.towa-film.tls.certresolver=myresolver"
 
-      # Router www : redirige en permanence vers le domaine sans www
-      - "traefik.http.routers.goon-video-www.rule=Host(`www.goonvideo.fr`)"
-      - "traefik.http.routers.goon-video-www.entrypoints=websecure"
-      - "traefik.http.routers.goon-video-www.tls=true"
-      - "traefik.http.routers.goon-video-www.tls.certresolver=myresolver"
-      - "traefik.http.routers.goon-video-www.middlewares=www-to-apex"
-      - "traefik.http.middlewares.www-to-apex.redirectregex.regex=^https://www\\.goonvideo\\.fr/(.*)"
-      - "traefik.http.middlewares.www-to-apex.redirectregex.replacement=https://goonvideo.fr/$${1}"
-      - "traefik.http.middlewares.www-to-apex.redirectregex.permanent=true"
+      # Router redirections : www.towafilm.fr et l'ancien domaine goonvideo.fr
+      # renvoient en permanence (301) vers la meme page sur towafilm.fr.
+      # A garder tant que goonvideo.fr existe : c'est ce qui transmet le referencement.
+      - "traefik.http.routers.towa-film-redirect.rule=Host(`www.towafilm.fr`) || Host(`goonvideo.fr`) || Host(`www.goonvideo.fr`)"
+      - "traefik.http.routers.towa-film-redirect.entrypoints=websecure"
+      - "traefik.http.routers.towa-film-redirect.tls=true"
+      - "traefik.http.routers.towa-film-redirect.tls.certresolver=myresolver"
+      - "traefik.http.routers.towa-film-redirect.middlewares=to-towafilm"
+      - "traefik.http.middlewares.to-towafilm.redirectregex.regex=^https?://[^/]+/(.*)"
+      - "traefik.http.middlewares.to-towafilm.redirectregex.replacement=https://towafilm.fr/$${1}"
+      - "traefik.http.middlewares.to-towafilm.redirectregex.permanent=true"
 
-      # Redirection automatique HTTP -> HTTPS (les deux hosts)
-      - "traefik.http.routers.goon-video-http.rule=Host(`goonvideo.fr`) || Host(`www.goonvideo.fr`)"
-      - "traefik.http.routers.goon-video-http.entrypoints=web"
-      - "traefik.http.routers.goon-video-http.middlewares=astro-redirect"
+      # Meme redirection depuis HTTP, en un seul saut
+      - "traefik.http.routers.towa-film-redirect-http.rule=Host(`www.towafilm.fr`) || Host(`goonvideo.fr`) || Host(`www.goonvideo.fr`)"
+      - "traefik.http.routers.towa-film-redirect-http.entrypoints=web"
+      - "traefik.http.routers.towa-film-redirect-http.middlewares=to-towafilm"
+
+      # Redirection automatique HTTP -> HTTPS du domaine canonique
+      - "traefik.http.routers.towa-film-http.rule=Host(`towafilm.fr`)"
+      - "traefik.http.routers.towa-film-http.entrypoints=web"
+      - "traefik.http.routers.towa-film-http.middlewares=astro-redirect"
       - "traefik.http.middlewares.astro-redirect.redirectscheme.scheme=https"
 
 networks:

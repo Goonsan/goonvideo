@@ -27,7 +27,7 @@ const videoSchema = {
             duration: video.duration,
             embedUrl: `https://www.youtube-nocookie.com/embed/${video.id}`,
             contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
-            creator: { '@id': 'https://goonvideo.fr/#olivier-gonnet' },
+            creator: { '@id': 'https://towafilm.fr/#olivier-gonnet' },
         },
     })),
 };
@@ -144,10 +144,12 @@ const videoSchema = {
     }
 
     .filter-btn {
-        background: transparent; border: 1px solid rgba(255,255,255,0.1);
-        color: white; padding: 0.6rem 1.5rem; border-radius: 30px; cursor: pointer;
+        background: transparent; border: 1px solid $line;
+        color: white; padding: 0.65rem 1.4rem; border-radius: 2px; cursor: pointer;
+        font-family: $font-body; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em;
         transition: all 0.3s ease; text-transform: uppercase;
-        &:hover, &.active { background: $gold; color: $dark-blue; border-color: $gold; }
+        &:hover { border-color: white; }
+        &.active { background: white; color: $charcoal; border-color: white; }
     }
 
     .video-grid {
@@ -159,12 +161,12 @@ const videoSchema = {
         padding-bottom: 56.25%; // Ratio 16:9
         height: 0;
         background: #000;
-        border-radius: 8px;
+        border-radius: 2px;
         overflow: hidden;
         cursor: pointer;
 
         &:focus-visible {
-            outline: 2px solid $gold;
+            outline: 2px solid white;
             outline-offset: 4px;
         }
 
@@ -187,15 +189,17 @@ const videoSchema = {
             position: absolute; inset: 0; background: rgba(0,0,0,0.4);
             display: flex; align-items: center; justify-content: center;
             opacity: 1; transition: opacity 0.3s ease;
-            .play-text { border: 1px solid white; padding: 0.8rem 1.5rem; color: white; }
+            .play-text { border: 1px solid white; padding: 0.8rem 1.5rem; color: white; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; }
         }
         &:hover img { transform: scale(1.05); transition: 0.5s; }
     }
 
-    .video-title { margin-top: 1rem; font-size: 1.1rem; color: white; }
+    .video-title { margin: 1rem 0 0; font-size: 1.45rem; color: white; }
     .category-badge {
-        position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,0.7);
-        color: $gold; padding: 4px 12px; font-size: 0.7rem; font-weight: bold;
+        position: absolute; top: 1rem; left: 1rem; background: rgba(17,17,17,0.8);
+        border-left: 2px solid $red;
+        color: white; padding: 4px 10px; font-size: 0.65rem; font-weight: 500;
+        letter-spacing: 0.15em; text-transform: uppercase;
     }
 
     @media (max-width: 768px) {
@@ -207,7 +211,7 @@ const videoSchema = {
         padding-bottom: 56.25%; /* Ratio 16:9 */
         height: 0;
         background: #000;
-        border-radius: 8px;
+        border-radius: 2px;
         overflow: hidden;
         cursor: pointer;
 

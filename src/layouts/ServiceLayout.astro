@@ -29,7 +29,7 @@ const {
     serviceName, serviceType, videosTitle, videoCategories, pricingIds, faq,
 } = Astro.props;
 
-const SITE = 'https://goonvideo.fr';
+const SITE = 'https://towafilm.fr';
 const pageURL = new URL(Astro.url.pathname, SITE).href;
 const categories = getPricing(pricingIds);
 
@@ -96,7 +96,7 @@ const schema = [
             <div class="title-underline"></div>
             <p class="lead">{lead}</p>
             <div class="header-actions">
-                <a href="/devis/" class="btn-yellow">Demander un devis</a>
+                <a href="/devis/" class="btn-primary">Demander un devis</a>
                 <a href="#realisations" class="btn-outlined">Voir mes réalisations</a>
             </div>
         </header>
@@ -133,7 +133,7 @@ const schema = [
             <h2>Parlons de votre projet</h2>
             <p>Décrivez-moi votre projet et vos dates : je vous réponds rapidement avec une proposition sur mesure.</p>
             <div class="header-actions">
-                <a href="/devis/" class="btn-yellow">Demander un devis</a>
+                <a href="/devis/" class="btn-primary">Demander un devis</a>
                 <a href="/contact/" class="btn-outlined">Me contacter</a>
             </div>
         </section>
@@ -149,7 +149,7 @@ const schema = [
 <style lang="scss">
     @use "../styles/variables" as vars;
 
-    .service-page { padding-top: 150px; background: vars.$dark-blue; }
+    .service-page { padding-top: 150px; }
 
     .page-header {
         text-align: center;
@@ -167,16 +167,14 @@ const schema = [
         }
 
         .subtitle {
-            color: vars.$gold;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.9rem;
+            @include vars.label;
+            color: vars.$muted;
             display: block;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
         }
-        .page-title { font-size: 3.5rem; color: white; margin: 0; }
-        .title-underline { width: 60px; height: 3px; background: vars.$gold; margin: 1.5rem auto 2rem; }
-        .lead { font-size: 1.15rem; line-height: 1.8; opacity: 0.9; }
+        .page-title { font-size: 3.6rem; color: white; margin: 0; }
+        .title-underline { width: 48px; height: 2px; background: vars.$red; margin: 1.75rem auto 2rem; }
+        .lead { font-size: 1.1rem; line-height: 1.8; color: vars.$muted; }
     }
 
     .header-actions {
@@ -194,18 +192,20 @@ const schema = [
         margin: 0 auto;
         padding: 0 1.5rem;
 
-        :global(h2) { font-size: 2.2rem; margin: 4rem 0 1.5rem; }
-        :global(p) { line-height: 1.8; opacity: 0.85; font-size: 1.05rem; }
-        :global(a) { color: vars.$gold; text-decoration: underline; }
+        :global(h2) { font-size: 2.5rem; margin: 4rem 0 1.5rem; }
+        :global(p) { line-height: 1.8; color: vars.$muted; font-size: 1.05rem; }
+        :global(strong) { color: white; font-weight: 600; }
+        :global(a) { @include vars.content-link; color: white; }
         :global(ul), :global(ol) { padding-left: 0; list-style: none; }
         :global(li) {
             position: relative;
             padding-left: 2rem;
             margin-bottom: 1rem;
             line-height: 1.7;
-            opacity: 0.9;
+            color: vars.$muted;
         }
-        :global(ul li::before) { content: "→"; color: vars.$gold; position: absolute; left: 0; }
+        // Puce : un tiret fin rouge
+        :global(ul li::before) { content: ""; position: absolute; left: 0; top: 0.85em; width: 0.9rem; height: 1px; background: vars.$red; }
         :global(ol) { counter-reset: step; }
         :global(ol li) { counter-increment: step; }
         :global(ol li::before) {
@@ -215,23 +215,24 @@ const schema = [
             top: 0.2rem;
             width: 1.4rem;
             height: 1.4rem;
+            box-sizing: border-box;
             border-radius: 50%;
-            background: vars.$gold;
-            color: vars.$dark-blue;
-            font-size: 0.8rem;
-            font-weight: 700;
+            border: 1px solid vars.$red;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 600;
             text-align: center;
-            line-height: 1.4rem;
+            line-height: calc(1.4rem - 2px);
         }
     }
 
     .block { padding: 80px 0 0; }
-    .section-title { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; }
+    .section-title { text-align: center; margin: 0 0 3rem; font-size: 2.8rem; }
 
     .more-link {
         text-align: center;
         margin-top: 0;
-        a { color: vars.$gold; font-weight: 600; }
+        a { @include vars.content-link; font-weight: 500; font-size: 0.9rem; }
     }
 
     .faq-list {
@@ -240,27 +241,27 @@ const schema = [
         padding: 0 1.5rem;
 
         details {
-            border-bottom: 1px solid rgba(vars.$gold, 0.3);
+            border-bottom: 1px solid vars.$line;
             padding: 1.2rem 0;
         }
         summary {
             cursor: pointer;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 500;
+            font-size: 1.05rem;
             list-style: none;
             display: flex;
             justify-content: space-between;
             gap: 1rem;
 
             &::-webkit-details-marker { display: none; }
-            &::after { content: "+"; color: vars.$gold; font-size: 1.4rem; line-height: 1; }
+            &::after { content: "+"; color: white; font-size: 1.4rem; line-height: 1; font-weight: 300; }
         }
         details[open] summary::after { content: "−"; }
         p {
             line-height: 1.8;
-            opacity: 0.85;
+            color: vars.$muted;
             margin: 1rem 0 0;
-            :global(a) { color: vars.$gold; text-decoration: underline; }
+            :global(a) { @include vars.content-link; color: white; }
         }
     }
 
@@ -268,9 +269,10 @@ const schema = [
         text-align: center;
         padding: 5rem 1.5rem;
         margin-top: 80px;
-        background: linear-gradient(to bottom, transparent, rgba(vars.$gold, 0.1));
-        h2 { font-size: 2.2rem; margin: 0 0 1rem; }
-        p { opacity: 0.85; max-width: 600px; margin: 0 auto; line-height: 1.7; }
+        background-color: vars.$charcoal-soft;
+        border-top: 1px solid vars.$line;
+        h2 { font-size: 2.6rem; margin: 0 0 1rem; }
+        p { color: vars.$muted; max-width: 600px; margin: 0 auto; line-height: 1.7; }
     }
 
     .other-services {
@@ -280,15 +282,15 @@ const schema = [
         gap: 0.8rem 2rem;
         padding: 2.5rem 1.5rem;
         font-size: 0.95rem;
-        span { opacity: 0.6; }
-        a { color: vars.$gold; font-weight: 600; }
+        span { color: vars.$muted; }
+        a { @include vars.content-link; font-weight: 500; }
     }
 
     @media (max-width: 768px) {
         .service-page { padding-top: 110px; }
         .page-header .page-title { font-size: 2.3rem; }
-        .service-content :global(h2) { font-size: 1.8rem; }
-        .section-title { font-size: 2rem; }
+        .service-content :global(h2) { font-size: 2rem; }
+        .section-title { font-size: 2.2rem; }
         .header-actions {
             flex-direction: column;
             gap: 1rem;

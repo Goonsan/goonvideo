@@ -11,7 +11,6 @@ export type Pack = {
 
 export type PricingCategory = {
     id: 'mariage' | 'clip' | 'recurrent' | 'vitrine';
-    icon: string;
     title: string;
     serviceUrl: string; // page de prestation associée
     packs: Pack[];
@@ -22,7 +21,6 @@ export type PricingCategory = {
 export const pricing: PricingCategory[] = [
     {
         id: 'mariage',
-        icon: '💍',
         title: 'Mariage',
         serviceUrl: '/videaste-mariage-nantes/',
         packs: [
@@ -35,7 +33,6 @@ export const pricing: PricingCategory[] = [
     },
     {
         id: 'clip',
-        icon: '🎵',
         title: 'Clip Musical',
         serviceUrl: '/clip-musical-nantes/',
         packs: [
@@ -46,7 +43,6 @@ export const pricing: PricingCategory[] = [
     },
     {
         id: 'recurrent',
-        icon: '📱',
         title: 'Communication Récurrente',
         serviceUrl: '/video-entreprise-nantes/',
         packs: [
@@ -57,7 +53,6 @@ export const pricing: PricingCategory[] = [
     },
     {
         id: 'vitrine',
-        icon: '🏢',
         title: 'Film Vitrine & Identité',
         serviceUrl: '/video-entreprise-nantes/',
         packs: [

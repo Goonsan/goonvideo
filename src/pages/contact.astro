@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-    title="Contact – Vidéaste à Nantes | Goon Video"
+    title="Contact – Vidéaste à Nantes | Towa Film"
     description="Discutons de votre projet vidéo : mariage, clip musical ou film d'entreprise. Olivier Gonnet, vidéaste à Nantes, vous répond sous 24h."
     breadcrumbs={[{ name: 'Contact', url: '/contact/' }]}
 >
@@ -18,7 +18,7 @@ import Footer from '../components/Footer.astro';
                 
                 <div class="info-list">
                     <div class="info-item">
-                        <span aria-hidden="true">📍</span>
+                        <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
                         <div>
                             <strong>Zone d'intervention</strong>
                             <p>Nantes, Loire-Atlantique &amp; Grand Ouest</p>
@@ -47,8 +47,8 @@ import Footer from '../components/Footer.astro';
                     <h2>Prêt à passer à l'action ?</h2>
                     <p>Cliquez ci-dessous pour m'envoyer un mail directement. N'hésitez pas à me décrire brièvement votre projet et vos dates.</p>
                     
-                    <a href="mailto:oliviergonnet.video@gmail.com?subject=Demande de projet vidéo - GOONVIDEO" class="main-btn">
-                        📩 ENVOYER UN MESSAGE
+                    <a href="mailto:oliviergonnet.video@gmail.com?subject=Demande de projet vidéo - TOWA FILM" class="btn-primary main-btn">
+                        Envoyer un message
                     </a>
                     <!--
                     <span class="or-text">OU</span>
@@ -63,7 +63,9 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style lang="scss">
-    .contact-page { padding-top: 150px; min-height: 80vh; background-color: #030f25; }
+    @use "../styles/variables" as vars;
+
+    .contact-page { padding-top: 150px; min-height: 80vh; }
     .contact-container { 
         max-width: 1100px; 
         margin: 0 auto; 
@@ -73,48 +75,50 @@ import Footer from '../components/Footer.astro';
         padding: 0 2rem;
     }
 
-    h1 { color: #e5c35c; font-size: 2.8rem; margin-bottom: 1.5rem; }
-    .contact-info p { font-size: 1.1rem; opacity: 0.8; line-height: 1.6; }
+    h1 { font-size: 3rem; margin: 0 0 1.5rem; }
+    .contact-info p { font-size: 1.05rem; color: vars.$muted; line-height: 1.8; }
 
     .info-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 3rem; }
-    .info-item { display: flex; gap: 1.5rem; align-items: center; }
-    .info-item span { font-size: 1.5rem; background: rgba(229, 195, 92, 0.1); padding: 15px; border-radius: 50%; border: 1px solid rgba(229, 195, 92, 0.2); }
-    .info-item strong { display: block; color: #e5c35c; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-    .info-item p { margin: 0; font-size: 1.2rem; font-weight: 600; }
+    .info-item { display: flex; gap: 1.25rem; align-items: center; }
+    // Picto fin au trait, dans un cercle discret
+    .info-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 3.25rem;
+        height: 3.25rem;
+        border: 1px solid vars.$line;
+        border-radius: 50%;
+    }
+    .info-item strong { display: block; @include vars.label; font-size: 0.72rem; color: vars.$muted; margin-bottom: 0.3rem; }
+    .info-item p { margin: 0; font-size: 1.1rem; font-weight: 500; color: white; }
 
     /* La carte d'action */
     .contact-action-card { 
-        background: rgba(255,255,255,0.03); 
+        background-color: vars.$charcoal-soft;
         padding: 3rem; 
-        border-radius: 20px; 
-        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 2px; 
+        border: 1px solid vars.$line;
         text-align: center;
         display: flex;
         align-items: center;
     }
-    .card-content h2 { font-size: 1.8rem; margin-bottom: 1rem; color: #fff; }
-    .card-content p { margin-bottom: 2rem; opacity: 0.7; }
+    .card-content h2 { font-size: 2.2rem; margin: 0 0 1rem; color: #fff; }
+    .card-content p { margin-bottom: 2rem; color: vars.$muted; line-height: 1.7; }
 
-    .main-btn { 
-        display: block;
-        background: #e5c35c; 
-        color: #030f25; 
-        padding: 1.2rem; 
-        border-radius: 8px; 
-        font-weight: 800; 
-        text-decoration: none;
-        transition: all 0.3s ease;
-        letter-spacing: 1px;
-    }
-    .main-btn:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+    .main-btn { display: block; padding: 1.1rem; }
 
     .or-text { display: block; margin: 1.5rem 0; font-size: 0.8rem; opacity: 0.5; }
-    .secondary-link { color: #e5c35c; text-decoration: none; font-weight: 600; border-bottom: 1px dotted; padding-bottom: 2px; }
+    .secondary-link { @include vars.content-link; font-weight: 500; }
 
     /* --- RESPONSIVE MOBILE --- */
     @media (max-width: 768px) {
+        .contact-page { padding-top: 120px; }
         .contact-container {
             display: block;
+            padding: 0 1.5rem;
         }
+        h1 { font-size: 2.4rem; }
+        .contact-action-card { margin-top: 3rem; padding: 2.25rem 1.5rem; }
     }
 </style>
