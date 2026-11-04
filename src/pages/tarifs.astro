@@ -7,16 +7,15 @@ import PricingGrid from '../components/PricingGrid.astro';
 ---
 
 <Layout
-    title="Tarifs Vidéaste Mariage & Clip à Nantes 2026 | Goon Video"
-    description="Tarifs 2026 de Goon Video, vidéaste à Nantes : film de mariage dès 1000 €, clip musical dès 500 €, vidéo d'entreprise dès 450 €, réseaux sociaux dès 250 €."
+    title="Tarifs Vidéaste Mariage & Clip à Nantes 2026 | Towa Film"
+    description="Tarifs 2026 de Towa Film, vidéaste à Nantes : film de mariage dès 1000 €, clip musical dès 500 €, vidéo d'entreprise dès 450 €, réseaux sociaux dès 250 €."
     breadcrumbs={[{ name: 'Tarifs', url: '/tarifs/' }]}
 >
     <Header />
     <main id="main-content" style="padding-top: 100px;"> <h1 style="text-align: center; font-size: 3rem;">Tarifs Vidéaste Nantes 2026</h1>
         <p class="intro">
             Des formules claires pour vos <a href="/videaste-mariage-nantes/">films de mariage</a>,
-            vos <a href="/clip-musical-nantes/">clips musicaux</a> et vos
-            <a href="/video-entreprise-nantes/">vidéos d'entreprise</a>, à Nantes, en Loire-Atlantique et dans le Grand Ouest.
+            vos <a href="/clip-musical-nantes/">clips musicaux</a> et vos <a href="/video-entreprise-nantes/">vidéos d'entreprise</a>, à Nantes, en Loire-Atlantique et dans le Grand Ouest.
             Chaque projet est unique : n'hésitez pas à demander un devis personnalisé.
         </p>
         <PricingGrid showServiceLink />
@@ -25,39 +24,31 @@ import PricingGrid from '../components/PricingGrid.astro';
     <section class="cta-section">
         <h2>Un projet spécifique ?</h2>
         <p>Contactez-moi pour un devis personnalisé adapté à vos besoins.</p>
-        <a href="mailto:oliviergonnet.video@gmail.com" class="btn-contact">ME CONTACTER</a>
+        <a href="mailto:contact@towafilm.fr" class="btn-outlined">Me contacter</a>
     </section>
 
     <style lang="scss">
+        @use "../styles/variables" as vars;
+
         .intro {
             max-width: 800px;
             margin: 0 auto 2rem;
             padding: 0 1rem;
             text-align: center;
             line-height: 1.8;
-            opacity: 0.85;
+            color: vars.$muted;
 
-            a { color: #e5c35c; text-decoration: underline; }
+            a { @include vars.content-link; color: white; }
         }
         .cta-section {
             text-align: center;
-            padding: 4rem 1rem;
-            background: linear-gradient(to bottom, transparent, rgba(229, 195, 92, 0.1));
+            padding: 5rem 1rem;
+            background-color: vars.$charcoal-soft;
+            border-top: 1px solid vars.$line;
 
-            h2 { font-size: 1.17em; }
+            h2 { font-size: 2.4rem; margin: 0 0 1rem; }
+            p { color: vars.$muted; margin: 0 0 2rem; }
         }
-        .btn-contact {
-            display: inline-block;
-            background: #e5c35c;
-            color: #030f25;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            font-weight: 800;
-            text-decoration: none;
-            margin-top: 1.5rem;
-            transition: transform 0.2s;
-        }
-        .btn-contact:hover { transform: scale(1.05); }
     </style>
 
     <Footer />

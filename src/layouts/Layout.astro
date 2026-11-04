@@ -9,7 +9,7 @@ interface Props {
 	schema?: Record<string, unknown>[];              // données structurées propres à la page
 }
 
-const SITE = "https://goonvideo.fr";
+const SITE = "https://towafilm.fr";
 const BUSINESS_ID = `${SITE}/#business`;
 const PERSON_ID = `${SITE}/#olivier-gonnet`;
 const WEBSITE_ID = `${SITE}/#website`;
@@ -18,7 +18,7 @@ const {
 	title,
 	description = "Olivier Gonnet, vidéaste à Nantes : captation et montage pour mariages, clips musicaux et vidéos d'entreprise en Loire-Atlantique et dans le Grand Ouest.",
 	image = "/images/og-goonvideo.jpg",
-	imageAlt = "Couple de mariés filmé par Goon Video, vidéaste mariage à Nantes",
+	imageAlt = "Couple de mariés filmé par Towa Film, vidéaste mariage à Nantes",
 	breadcrumbs = [],
 	schema = [],
 } = Astro.props;
@@ -40,22 +40,23 @@ const jsonLd = {
 			"@type": "WebSite",
 			"@id": WEBSITE_ID,
 			"url": `${SITE}/`,
-			"name": "Goon Video",
-			"alternateName": ["Goonvideo", "Olivier Gonnet Vidéaste"],
+			"name": "Towa Film",
+			"alternateName": ["Towafilm", "Goon Video", "Goonvideo", "Olivier Gonnet Vidéaste"],
 			"inLanguage": "fr-FR",
 			"publisher": { "@id": BUSINESS_ID },
 		},
 		{
 			"@type": "LocalBusiness",
 			"@id": BUSINESS_ID,
-			"name": "Goon Video",
-			"alternateName": "Goonvideo",
+			"name": "Towa Film",
+			// Ancien nom gardé en alias pour que Google relie les deux marques
+			"alternateName": ["Towafilm", "Goon Video", "Goonvideo"],
 			"description": "Vidéaste à Nantes : films de mariage, clips musicaux, vidéos d'entreprise et captations événementielles en Loire-Atlantique et dans le Grand Ouest. Tournage 4K à deux caméras, drone en option.",
 			"slogan": "Donnez vie à vos projets, de l'émotion à l'image.",
 			"url": `${SITE}/`,
 			"logo": `${SITE}/android-chrome-512x512.png`,
 			"image": [`${SITE}/images/og-goonvideo.jpg`, `${SITE}/android-chrome-512x512.png`],
-			"email": "oliviergonnet.video@gmail.com",
+			"email": "contact@towafilm.fr",
 			"founder": { "@id": PERSON_ID },
 			"address": {
 				"@type": "PostalAddress",
@@ -150,7 +151,7 @@ const jsonLd = {
 		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 		<link rel="manifest" href="/site.webmanifest">
-		<meta name="theme-color" content="#030f25">
+		<meta name="theme-color" content="#111111">
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="author" content="Olivier Gonnet" />
@@ -167,7 +168,7 @@ const jsonLd = {
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content={imageAlt} />
 		<meta property="og:locale" content="fr_FR" />
-		<meta property="og:site_name" content="Goon Video" />
+		<meta property="og:site_name" content="Towa Film" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -178,7 +179,7 @@ const jsonLd = {
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<!-- JSON-LD : Données structurées pour Google (entreprise, site, page, fil d'Ariane) -->
 		<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
@@ -244,28 +245,31 @@ const jsonLd = {
 </html>
 
 <style is:global lang="scss">
-	$gold: #e5c35c;
-  	$dark-blue: #030f25;
-  	$font-titles: 'Playfair Display', serif;
-  	$font-body: 'Plus Jakarta Sans', sans-serif;
+	@use "../styles/variables" as vars;
 
-  	:root {
-    	--gold: #{$gold}; // On fait passer la variable Sass en variable CSS pour le reste du site
-    	--dark-blue: #{$dark-blue};
-  	}
+	:root {
+		// Les variables Sass passent en variables CSS pour le reste du site
+		--charcoal: #{vars.$charcoal};
+		--offwhite: #{vars.$offwhite};
+		--red: #{vars.$red};
+		--line: #{vars.$line};
+		--font-titles: #{vars.$font-titles};
+	}
 
 	html, body {
 		margin: 0;
 		padding: 0;
-		background-color: $dark-blue;
+		background-color: vars.$charcoal;
 		color: white;
-		font-family: $font-body;
+		font-family: vars.$font-body;
 		-webkit-font-smoothing: antialiased; // Rend les polices plus fines/propres sur Mac/Chrome
 	}
 
 	h1, h2, h3 {
-		font-family: $font-titles;
-		color: $gold;
+		font-family: vars.$font-titles;
+		font-weight: 600;
+		line-height: 1.15;
+		font-variant-numeric: lining-nums; // Cormorant met des chiffres bas de casse par défaut (« 2026 » tassé)
 	}
 
 	a {
@@ -274,65 +278,58 @@ const jsonLd = {
 		transition: color 0.3s ease;
 
 		&:hover {
-		color: $gold;
+			color: vars.$muted;
 		}
 	}
 
-	.btn-yellow {
-		position: relative;
-		background-color: $gold;
-		color: #111;
-		padding: 0.75rem 1.5rem;
-		border-radius: 4px;
-		font-weight: 700;
+	// Bouton principal : le rouge du logo, réservé à « Demander un devis » et aux appels à l'action
+	.btn-primary {
+		display: inline-block;
+		background-color: vars.$red;
+		color: white;
+		padding: 0.85rem 1.6rem;
+		border-radius: 2px;
+		font-family: vars.$font-body;
+		font-weight: 600;
 		text-transform: uppercase;
-		font-size: 0.9rem;
-		box-shadow: 0 1px 14px #000;
-		text-shadow: 0 0 0px rgba(0, 0, 0, 0.5);
-		transition: all 0.3s ease;
-		overflow: hidden;
-		z-index: 1;
-
-		&:before {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 0%;
-			height: 100%;
-			background: #fff;
-			z-index: -1;
-			transition: all 0.3s ease;
-		}
+		letter-spacing: 0.12em;
+		font-size: 0.8rem;
+		text-decoration: none;
+		border: none; // aussi utilisé sur des <button>
+		cursor: pointer;
+		transition: background-color 0.3s ease;
 
 		&:hover {
-			background-color: #fff;
-			color: #000;
-			box-shadow: 0 0 0 #00000000;
-			text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-			&:before {
-				width: 100%;
-			}
+			background-color: vars.$red-dark;
+			color: white;
 		}
 	}
 
 	.btn-outlined {
+		display: inline-block;
 		background-color: transparent;
-		border: 2px solid white;
+		border: 1px solid white;
 		color: white;
-		padding: 0.75rem 1.5rem;
-		border-radius: 4px;
-		font-weight: 700;
+		padding: 0.85rem 1.6rem;
+		border-radius: 2px;
+		font-weight: 600;
 		text-transform: uppercase;
-		font-size: 0.9rem;
+		letter-spacing: 0.12em;
+		font-size: 0.8rem;
+		transition: background-color 0.3s ease, color 0.3s ease;
+
+		&:hover {
+			background-color: white;
+			color: vars.$charcoal;
+		}
 	}
 
 	/* Reset simple */
 	* { box-sizing: inherit; }
 
-	/* accessibilité */
-	a:focus-visible, button:focus-visible, .btn-gold:focus-visible {
-		outline: 2px solid $gold;
+	/* accessibilité : le contour prend la couleur du texte, visible sur fond sombre comme sur fond clair */
+	a:focus-visible, button:focus-visible {
+		outline: 2px solid currentColor;
 		outline-offset: 4px;
 	}
 
@@ -341,11 +338,11 @@ const jsonLd = {
 		top: -4rem;
 		left: 0.5rem;
 		z-index: 1000;
-		background: $gold;
-		color: #111;
+		background: vars.$red;
+		color: white;
 		padding: 0.75rem 1.5rem;
-		border-radius: 4px;
-		font-weight: 700;
+		border-radius: 2px;
+		font-weight: 600;
 		text-decoration: none;
 		transition: top 0.2s ease;
 

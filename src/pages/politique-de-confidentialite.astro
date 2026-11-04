@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-    title="Politique de confidentialité | Goon Video"
-    description="Politique de confidentialité de Goon Video : données collectées, cookies et traceurs utilisés, et vos droits."
+    title="Politique de confidentialité | Towa Film"
+    description="Politique de confidentialité de Towa Film : données collectées, cookies et traceurs utilisés, et vos droits."
 >
     <Header />
     <main id="main-content" class="legal-page">
@@ -16,9 +16,9 @@ import Footer from '../components/Footer.astro';
 
             <h2>1. Qui sommes-nous ?</h2>
             <p>
-                Ce site est édité par Olivier Gonnet (Goon Video), vidéaste basé à Nantes.
+                Ce site est édité par Olivier Gonnet (Towa Film), vidéaste basé à Nantes.
                 Pour toute question relative à vos données personnelles, vous pouvez me contacter à
-                l'adresse <a href="mailto:oliviergonnet.video@gmail.com">oliviergonnet.video@gmail.com</a>.
+                l'adresse <a href="mailto:contact@towafilm.fr">contact@towafilm.fr</a>.
             </p>
 
             <h2>2. Données collectées</h2>
@@ -30,8 +30,7 @@ import Footer from '../components/Footer.astro';
             <p>
                 <strong>Demande de devis :</strong> le formulaire de la page Devis est un Google Forms intégré.
                 Les informations que vous y saisissez (nom, date, description de votre projet...) sont transmises
-                et hébergées par Google Ireland Limited, conformément à la
-                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité de Google</a>.
+                et hébergées par Google Ireland Limited, conformément à la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">politique de confidentialité de Google</a>.
                 Elles me sont ensuite transmises pour vous répondre.
             </p>
 
@@ -76,9 +75,8 @@ import Footer from '../components/Footer.astro';
             <p>
                 Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit
                 d'accès, de rectification, d'effacement et d'opposition sur vos données personnelles. Pour l'exercer,
-                contactez-moi à <a href="mailto:oliviergonnet.video@gmail.com">oliviergonnet.video@gmail.com</a>.
-                Vous pouvez également introduire une réclamation auprès de la
-                <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.
+                contactez-moi à <a href="mailto:contact@towafilm.fr">contact@towafilm.fr</a>.
+                Vous pouvez également introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.
             </p>
 
             <h2>6. Hébergement</h2>
@@ -104,22 +102,25 @@ document.getElementById('manage-cookies')?.addEventListener('click', () => {
     .legal-page { padding: 150px 1rem 80px; }
     .container { max-width: 800px; margin: 0 auto; }
 
-    h1 { color: vars.$gold; font-size: 2.4rem; margin-bottom: 0.5rem; }
+    h1 { font-size: 2.8rem; margin-bottom: 0.5rem; }
     .updated { opacity: 0.6; font-size: 0.9rem; margin-bottom: 3rem; }
 
-    h2 { font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; }
 
     p, li { line-height: 1.7; opacity: 0.85; }
     ul { padding-left: 1.5rem; }
     li { margin-bottom: 0.8rem; }
 
-    a { color: vars.$gold; text-decoration: underline; }
+    a { @include vars.content-link; }
 
     .link-button {
         background: none;
         border: none;
         padding: 0;
-        color: vars.$gold;
+        color: white;
+        text-decoration-color: vars.$red;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
         text-decoration: underline;
         cursor: pointer;
         font-size: inherit;
@@ -128,6 +129,6 @@ document.getElementById('manage-cookies')?.addEventListener('click', () => {
 
     @media (max-width: 768px) {
         .legal-page { padding: 120px 1rem 60px; }
-        h1 { font-size: 1.9rem; }
+        h1 { font-size: 2.2rem; }
     }
 </style>

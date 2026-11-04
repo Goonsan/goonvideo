@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 ---
 
 <Layout
-    title="Demander un devis – Vidéaste à Nantes | Goon Video"
+    title="Demander un devis – Vidéaste à Nantes | Towa Film"
     description="Obtenez un devis personnalisé pour votre film de mariage, clip musical ou vidéo d'entreprise avec Olivier Gonnet, vidéaste à Nantes. Réponse sous 48h."
     breadcrumbs={[{ name: 'Demander un devis', url: '/devis/' }]}
 >
@@ -39,7 +39,7 @@ import Footer from '../components/Footer.astro';
             <div class="action-box">
                 <h3>Un projet Clip, Sport ou Entreprise ?</h3>
                 <p>Pour toute demande hors mariage, contactez-moi directement par mail :</p>
-                <a href="mailto:oliviergonnet.video@gmail.com?subject=Demande de devis personnalisé" class="btn-gold">
+                <a href="mailto:contact@towafilm.fr?subject=Demande de devis personnalisé" class="btn-primary">
                     ENVOYER UN MAIL DIRECT
                 </a>
             </div>
@@ -50,7 +50,7 @@ import Footer from '../components/Footer.astro';
                 <p>Pour que je puisse comprendre l'ambiance de votre union, merci de remplir ce questionnaire détaillé :</p>
 
                 <div id="gform-wrapper" class="gform-wrapper">
-                    <button type="button" id="load-gform" class="btn-yellow">Charger le formulaire</button>
+                    <button type="button" id="load-gform" class="btn-primary">Charger le formulaire</button>
                     <p class="gform-note">Formulaire hébergé par Google Forms — ne se charge qu'après votre clic.</p>
                 </div>
             </div>
@@ -77,80 +77,80 @@ import Footer from '../components/Footer.astro';
 
     .container { max-width: 900px; margin: 0 auto; }
 
-    h1 { font-size: 3rem; margin-bottom: 1rem; color: vars.$gold; }
+    h1 { font-size: 3rem; margin: 0 0 1rem; }
+    h2 { font-size: 2.2rem; margin: 0 0 1rem; }
+    h3 { font-size: 1.6rem; margin: 0 0 0.75rem; }
+    p { color: vars.$muted; line-height: 1.7; }
 
     .steps {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
         gap: 2rem;
         margin: 4rem 0;
     }
 
     .step {
-        background: rgba(255,255,255,0.03);
         padding: 2rem;
-        border-radius: 15px;
-        border: 1px solid rgba(vars.$gold, 0.1);
+        border-radius: 2px;
+        border: 1px solid vars.$line;
 
+        // Numéro d'étape dans un cercle fin rouge : un petit accent du logo
         .number {
-            display: inline-block;
-            width: 40px; height: 40px;
-            background: vars.$gold;
-            color: #030f25;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border: 1px solid vars.$red;
             border-radius: 50%;
-            line-height: 40px;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            font-family: vars.$font-titles;
+            font-size: 1.4rem;
+            font-weight: 600;
+            font-variant-numeric: lining-nums;
+            margin-bottom: 1.25rem;
         }
     }
 
     .action-box {
-        background: rgba(vars.$gold, 0.1);
+        background-color: vars.$charcoal-soft;
         padding: 3rem;
-        border-radius: 20px;
-        border: 1px solid vars.$gold;
+        border-radius: 2px;
+        border: 1px solid vars.$line;
 
-        .btn-gold {
-            display: inline-block;
-            background: vars.$gold;
-            color: #030f25;
-            padding: 1.2rem 2.5rem;
-            border-radius: 5px;
-            font-weight: 800;
-            text-decoration: none;
-            margin-top: 1.5rem;
-        }
+        .btn-primary { margin-top: 1rem; }
     }
 
     .badge {
+        @include vars.label;
         display: inline-block;
         padding: 0.4rem 1rem;
-        background: rgba(vars.$gold, 0.2);
-        color: vars.$gold;
-        border: 1px solid vars.$gold;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
+        border: 1px solid vars.$line;
+        border-radius: 2px;
+        font-size: 0.72rem;
+        color: vars.$muted;
+        margin-bottom: 1.25rem;
     }
 
     .form-container {
         margin-top: 5rem; // On espace bien de la partie mail
-        // ... reste de ton style
     }
 
     .gform-wrapper {
         margin-top: 2rem;
         padding: 3rem 1rem;
-        border: 1px dashed rgba(vars.$gold, 0.3);
-        border-radius: 15px;
+        border: 1px dashed vars.$line;
+        border-radius: 2px;
 
         .gform-note {
             margin-top: 1rem;
             font-size: 0.85rem;
-            opacity: 0.6;
         }
+    }
+
+    @media (max-width: 768px) {
+        .devis-page { padding-top: 120px; }
+        h1 { font-size: 2.4rem; }
+        h2 { font-size: 1.9rem; }
+        .action-box { padding: 2.25rem 1.5rem; }
     }
 </style>
