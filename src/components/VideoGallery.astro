@@ -72,8 +72,9 @@ const videoSchema = {
                     <div class="play-overlay">
                         <span class="play-text">Lire la vidéo</span>
                     </div>
-                    <div class="category-badge">{video.category}</div>
                 </div>
+                <!-- Hors de la zone cliquable : le nom accessible du bouton reste « Lire la vidéo : … » -->
+                <div class="category-badge">{video.category}</div>
                 <TitleTag class="video-title">{video.title}</TitleTag>
             </div>
         ))}
@@ -108,6 +109,7 @@ const videoSchema = {
     const wrappers = document.querySelectorAll('.thumbnail-wrapper');
     wrappers.forEach(wrapper => {
         const playVideo = () => {
+            if (wrapper.querySelector('iframe')) return; // déjà lancée
             const id = wrapper.getAttribute('data-video-id');
             const title = wrapper.getAttribute('data-video-title') || 'Vidéo';
             // Ajout de classes CSS pour forcer la taille
@@ -121,6 +123,12 @@ const videoSchema = {
                     allowfullscreen>
                 </iframe>
             `;
+            // Le lecteur YouTube prend le relais : la vignette n'est plus un bouton
+            wrapper.removeAttribute('role');
+            wrapper.removeAttribute('tabindex');
+            wrapper.removeAttribute('aria-label');
+            wrapper.closest('.video-card')?.querySelector('.category-badge')?.remove();
+            wrapper.querySelector('iframe')?.focus();
         };
 
         wrapper.addEventListener('click', playVideo);
@@ -194,8 +202,11 @@ const videoSchema = {
         &:hover img { transform: scale(1.05); transition: 0.5s; }
     }
 
+    .video-card { position: relative; } // repère du badge, posé sur le coin de la vignette
+
     .video-title { margin: 1rem 0 0; font-size: 1.45rem; color: white; }
     .category-badge {
+        pointer-events: none; // un clic sur le badge lance quand même la vidéo
         position: absolute; top: 1rem; left: 1rem; background: rgba(17,17,17,0.8);
         border-left: 2px solid $red;
         color: white; padding: 4px 10px; font-size: 0.65rem; font-weight: 500;

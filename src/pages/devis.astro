@@ -20,24 +20,24 @@ import Footer from '../components/Footer.astro';
             <div class="steps">
                 <div class="step">
                     <span class="number">1</span>
-                    <h3>Le Brief</h3>
+                    <h2>Le Brief</h2>
                     <p>On discute de vos besoins (Mariage, Clip, Entreprise).</p>
                 </div>
                 <div class="step">
                     <span class="number">2</span>
-                    <h3>L'Analyse</h3>
+                    <h2>L'Analyse</h2>
                     <p>Je reviens vers vous avec une proposition tarifaire sous 48h.</p>
                 </div>
                 <div class="step">
                     <span class="number">3</span>
-                    <h3>Le Tournage</h3>
+                    <h2>Le Tournage</h2>
                     <p>On fixe les dates et on donne vie à vos images.</p>
                 </div>
             </div>
 
              
             <div class="action-box">
-                <h3>Un projet Clip, Sport ou Entreprise ?</h3>
+                <h2>Un projet Clip, Sport ou Entreprise ?</h2>
                 <p>Pour toute demande hors mariage, contactez-moi directement par mail :</p>
                 <a href="mailto:contact@towafilm.fr?subject=Demande de devis personnalisé" class="btn-primary">
                     ENVOYER UN MAIL DIRECT
@@ -79,7 +79,8 @@ import Footer from '../components/Footer.astro';
 
     h1 { font-size: 3rem; margin: 0 0 1rem; }
     h2 { font-size: 2.2rem; margin: 0 0 1rem; }
-    h3 { font-size: 1.6rem; margin: 0 0 0.75rem; }
+    // Titres des étapes et de l'encadré : des h2 pour le plan de la page, à la taille d'un sous-titre
+    .step h2, .action-box h2 { font-size: 1.6rem; margin: 0 0 0.75rem; }
     p { color: vars.$muted; line-height: 1.7; }
 
     .steps {

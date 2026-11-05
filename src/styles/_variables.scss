@@ -12,8 +12,8 @@ $line: rgba(255, 255, 255, 0.12);      // filets et bordures discrètes sur fond
 // (texte blanc, 6.7:1) et les éléments décoratifs (filets, puces, soulignements), pas pour du texte.
 
 // Typographies : Cormorant Garamond (proche du slogan du logo) et Montserrat (proche de « FILM »)
-$font-titles: 'Cormorant Garamond', serif;
-$font-body: 'Montserrat', sans-serif;
+$font-titles: var(--font-cormorant);
+$font-body: var(--font-montserrat);
 
 @mixin flex-center {
     display: flex;
