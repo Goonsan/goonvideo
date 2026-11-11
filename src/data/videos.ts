@@ -13,6 +13,14 @@ export type Video = {
 
 export const videos: Video[] = [
     {
+        id: '3XH7Xsq81pQ',
+        title: 'Mariage - Elodie & Maxime',
+        category: 'Mariage',
+        description: "Film du mariage d'Elodie & Maxime à Saint-Pôtan, en Bretagne, en juin 2026 : une journée de lumière d'été, de rires et d'émotion, entourés de ceux qu'ils aiment.",
+        uploadDate: '2026-11-11',
+        duration: 'PT9M46S',
+    },
+    {
         id: 'XR3GvGvyQhU',
         title: 'Shooting inspiration mariage Aperol Spritz',
         category: 'Mariage',
