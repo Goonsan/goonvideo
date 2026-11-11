@@ -13,12 +13,12 @@ export type Video = {
 
 export const videos: Video[] = [
     {
-        id: '3XH7Xsq81pQ',
-        title: 'Mariage - Elodie & Maxime',
+        id: 'AGcEAGJL-Lk',
+        title: 'Mariage - Sintia & Maurice',
         category: 'Mariage',
-        description: "Film du mariage d'Elodie & Maxime à Saint-Pôtan, en Bretagne, en juin 2026 : une journée de lumière d'été, de rires et d'émotion, entourés de ceux qu'ils aiment.",
-        uploadDate: '2026-11-11',
-        duration: 'PT9M46S',
+        description: "Film de mariage de Sintia & Maurice : une journée d'émotions, de rires et de larmes de joie, filmée par Olivier Gonnet, vidéaste mariage à Nantes.",
+        uploadDate: '2026-08-08',
+        duration: 'PT10M18S',
     },
     {
         id: 'XR3GvGvyQhU',
@@ -29,6 +29,14 @@ export const videos: Video[] = [
         duration: 'PT4M28S',
     },
     {
+        id: 'fXsKkRrIpZE',
+        title: 'Mariage - Anaïs & Baptiste',
+        category: 'Mariage',
+        description: "Film de mariage cinématique 4K d'Anaïs et Baptiste, une journée placée sous le signe de l'émotion et de la complicité.",
+        uploadDate: '2026-04-21',
+        duration: 'PT10M11S',
+    },
+    {
         id: 'iKo0zDvqC8o',
         title: 'Shooting inspiration mariage bohème champêtre chic',
         category: 'Mariage',
@@ -37,20 +45,12 @@ export const videos: Video[] = [
         duration: 'PT2M18S',
     },
     {
-        id: 'AGcEAGJL-Lk',
-        title: 'Mariage - Sintia & Maurice',
+        id: '3XH7Xsq81pQ',
+        title: 'Mariage - Elodie & Maxime',
         category: 'Mariage',
-        description: "Film de mariage de Sintia & Maurice : une journée d'émotions, de rires et de larmes de joie, filmée par Olivier Gonnet, vidéaste mariage à Nantes.",
-        uploadDate: '2026-08-08',
-        duration: 'PT10M18S',
-    },
-    {
-        id: 'fXsKkRrIpZE',
-        title: 'Mariage - Anaïs & Baptiste',
-        category: 'Mariage',
-        description: "Film de mariage cinématique 4K d'Anaïs et Baptiste, une journée placée sous le signe de l'émotion et de la complicité.",
-        uploadDate: '2026-04-21',
-        duration: 'PT10M11S',
+        description: "Film du mariage d'Elodie & Maxime à Saint-Pôtan, en Bretagne, en juin 2026 : une journée de lumière d'été, de rires et d'émotion, entourés de ceux qu'ils aiment.",
+        uploadDate: '2026-11-11',
+        duration: 'PT9M46S',
     },
     {
         id: 'XIxziMQwV5Y',
@@ -68,7 +68,7 @@ export const videos: Video[] = [
         uploadDate: '2026-06-08',
         duration: 'PT6M38S',
     },
-        {
+    {
         id: 'nZoe62v4yT0',
         title: 'Prêt à trembler ?',
         category: 'Court-métrage',
